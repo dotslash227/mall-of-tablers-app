@@ -1,17 +1,27 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
+  <div class="custom-menu-override">
+    <div menuClose class="profile-menu-container" (click)="goToProfile()">
+      <div class="image">
+          <img src="../assets/imgs/profile.png">
+      </div>
+      <div>
+        JOHN DOE
+      </div>
+    </div>
+    <div menuClose *ngFor="let p of pages" (click)="openPage(p)">
+      {{p.title}}
+    </div>
+    <div menuClose (click)="openSearch()">
+      Search
+    </div>
+    <div menuClose (click)="goToLogin()">
+      Login
+    </div>
+    <div menuClose>
+      About
+    </div>
+  </div>
 
 </ion-menu>
 

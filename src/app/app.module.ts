@@ -5,6 +5,15 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { ProfilePage } from '../pages/profile/profile';
+import { LoginPage } from '../pages/login/login';
+import { SearchPage } from '../pages/search/search';
+
+import { NavbarComponent } from '../components/navbar/navbar';
+import { CardComponent } from '../components/card/card';
+import { CategoryComponent } from '../components/category/category';
+import { ReviewComponent } from '../components/review/review';
+import { AlternateCardComponent } from '../components/alternate-card/alternate-card';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,7 +22,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    NavbarComponent,
+    CardComponent,
+    CategoryComponent,
+    ReviewComponent,
+    ProfilePage,
+    LoginPage,
+    SearchPage,
+    AlternateCardComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +40,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    NavbarComponent,
+    CardComponent,
+    CategoryComponent,
+    ReviewComponent,
+    ProfilePage,
+    LoginPage,
+    SearchPage,
+    AlternateCardComponent
   ],
   providers: [
     StatusBar,

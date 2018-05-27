@@ -14,3 +14,135 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+* {
+    font-family: "Nunito";
+}
+
+ion-header:after {
+    display: none;
+}
+
+.nav {
+    display: flex;
+
+    div {
+        align-self: center;
+        display: inline;
+        text-align: center;
+        
+        ion-icon {
+            font-size: 30px;
+        }
+    }
+}
+
+@mixin header-styles($background, $color){
+	.toolbar-background
+	{
+		border: none !important;
+		background-color: $background;
+	}
+
+	.toolbar-title,
+	.back-button,
+	.bar-button
+	{
+        color: $color !important;
+        font-weight: bolder !important;
+	}
+}
+
+ion-header {
+	@include header-styles(color($colors, primary), color($colors, light));
+}
+
+@mixin menu-styles($color) {
+
+    .menu-inner {
+        background: rgba(131, 175, 252, 0.7) !important;
+        color: $color;
+    }
+    
+}
+
+$padding: 1em;
+
+ion-menu {
+    .menu-inner {
+        box-shadow: none !important;
+    }
+
+    .custom-menu-override {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background: none;
+
+        & > div {
+            font-size: $h3-font-size;
+            font-weight: bold;
+            text-align: left;
+            width: 100%;
+            padding: $padding;
+            border-bottom: 1px solid #fff;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+        }
+    }
+
+    @include menu-styles(#ffffff);
+}
+
+.profile-menu-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    & > div {
+        display: inline;
+        text-align: center;
+    }
+
+    .image {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        background: white;
+        border-radius: 10px;
+    }
+}
+
+.underline {
+    display: inline-block;
+
+    &::after {
+        display: block;
+        content: '';
+        border: 1px solid color($colors, primary);
+    }
+}
+
+.gplus {
+    button {
+        width: 100%;
+        ion-icon {
+            font-size: 35px;
+        }
+    }
+}
+
+.fb {
+    button {
+        width: 100%;
+        ion-icon {
+            font-size: 35px;
+        }
+    }
+}

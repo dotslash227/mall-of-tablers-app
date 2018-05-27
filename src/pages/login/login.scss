@@ -1,0 +1,37 @@
+page-login {
+
+    ion-input {
+        font-size: $h2-font-size;
+        ion-label {
+            font-size: $h4-font-size;
+        }
+    }
+
+
+    .rounded {
+        border-radius: 10px;
+    }
+
+
+    .gplus {
+        border: 1px solid color($colors, danger);
+        * ion-icon {
+            color: color($colors, danger);
+        }
+        button {
+            background: none;
+        }
+    }
+
+    .fb {
+        margin-left: 4px;
+        border: 1px solid #3b5998;
+        * ion-icon {
+            color: #3b5998;
+        }
+        button {
+            background: none;
+        }
+    }
+
+}

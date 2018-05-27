@@ -1,0 +1,47 @@
+category {
+    .category {
+        max-width: 630px;
+        margin: 0 auto;
+        padding: 16px 0;
+
+        & > div {
+            margin-top: 8px;
+        }
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+
+        & > div {
+            display: inline-block;
+
+            &:first-child {
+                font-size: $h5-font-size;
+                font-weight: lighter;
+            }
+        }
+    }
+
+    .category-footer {
+        display: flex;
+        justify-content: space-between;
+
+        & > div {
+            display: inline;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            background: color($colors, alt-light);
+            border-radius: 10px;
+            margin: 0 8px;
+        }
+
+        .dist {
+            color: color($colors, alt-light);
+        }
+    }
+}

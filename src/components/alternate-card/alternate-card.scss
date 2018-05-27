@@ -1,0 +1,18 @@
+alternate-card {
+
+    .title {
+        font-size: $h4-font-size;
+        font-weight: bolder;
+    }
+
+    .description {
+        
+        & > div:not([class^="title"]) {
+            width: 100%;
+            font-weight: lighter;
+            font-size: $h4-font-size;
+            padding-bottom: 4px;
+        }
+    }
+
+}

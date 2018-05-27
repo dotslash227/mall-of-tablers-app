@@ -34,11 +34,12 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  primary:    #525257,
+  secondary:  #f1bb3a,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  light:      #ffffff,
+  dark:       #58db77,
+  alt-light:  #d2d2d7,
 );
 
 
@@ -84,5 +85,36 @@ $colors: (
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
-@import "noto-sans";
+// @import "roboto";
+// @import "noto-sans";
+@font-face {
+  font-family: "Nunito";
+  font-style: lighter;
+  font-weight: 300;
+  src: url('../assets/Nunito-Light.ttf');
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/Nunito-Regular.ttf');
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: bold;
+  font-weight: 700;
+  src: url('../assets/Nunito-Bold.ttf');
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: bolder;
+  font-weight: 900;
+  src: url('../assets/Nunito-Black.ttf');
+}
+
+$toolbar-background: color($colors, light);
+$button-md-box-shadow: none;
+$button-md-box-shadow-activated: none;

@@ -1,0 +1,60 @@
+page-search {
+  ion-content {
+    padding: 2em;
+  }
+  .form-control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 1em;
+    &>div {
+      margin: 8px 0;
+      color: color($colors, light);
+    }
+    div>input {
+      width: 100%;
+      height: 100%;
+      background: none;
+      border: none;
+      font-size: $h3-font-size;
+      margin-left: 10px;
+      &::-webkit-input-placeholder {
+        color: color($colors, light);
+      }
+    }
+    button {
+      background: none;
+      color: color($colors, light);
+    }
+    div ion-icon {
+      width: 100%;
+      font-size: 2em;
+      text-align: center;
+      margin-right: 1px;
+      &[name="arrow-back"] {
+        font-size: 3.5em;
+      }
+    }
+  }
+  .search {
+    background: color($colors, alt-light);
+  }
+  ion-list {
+    ion-item:not(:first-child) {
+      color: color($colors, dark);
+    }
+    ion-item:first-child {
+      font-size: $h3-font-size;
+      color: color($colors, primary);
+      font-weight: bolder;
+    }
+    width: 100%;
+  }
+
+  div.recommended {
+    ion-item {
+        color: color($colors, primary);
+    }
+}
+}

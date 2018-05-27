@@ -1,0 +1,21 @@
+<ion-navbar>
+  <div class="nav">
+    <div>
+      <button color="primary" ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </div>
+
+    <div style="flex-grow:2">
+      <ion-title>
+        {{title}}
+      </ion-title>
+    </div>
+
+    <div>
+      <button color="primary" (click)="openSearch()" ion-button>
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ion-navbar>
