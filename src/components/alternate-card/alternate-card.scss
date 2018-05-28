@@ -1,7 +1,7 @@
 alternate-card {
 
     .title {
-        font-size: $h4-font-size;
+        font-size: $h6-font-size;
         font-weight: bolder;
     }
 
@@ -10,7 +10,7 @@ alternate-card {
         & > div:not([class^="title"]) {
             width: 100%;
             font-weight: lighter;
-            font-size: $h4-font-size;
+            font-size: $h6-font-size;
             padding-bottom: 4px;
         }
     }

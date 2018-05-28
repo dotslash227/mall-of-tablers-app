@@ -35,6 +35,11 @@ profile-modal {
               display: inline-block;
               vertical-align: middle;
               padding:0 2px;
+
+              &.address {
+                font-size: $h6-font-size;
+                font-weight: normal;
+              }
           }
       }
     
