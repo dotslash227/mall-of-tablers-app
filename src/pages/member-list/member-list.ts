@@ -24,7 +24,8 @@ export class MemberListPage {
   }
 
   openProfileModal() {
-    this.modalCtrl.create(ProfileModalComponent).present();
+    let profileModal = this.modalCtrl.create(ProfileModalComponent);
+    profileModal.present();
   }
 
 }

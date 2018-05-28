@@ -29,8 +29,4 @@ export class CardComponent implements OnInit {
     this.profileImgUri = (!this.profileImgUri) ? '../../assets/imgs/profile.png' : this.profileImgUri;
   }
 
-  showProfile() {
-    console.log('Show Profile');
-  }
-
 }
