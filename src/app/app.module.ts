@@ -17,6 +17,9 @@ import { AlternateCardComponent } from '../components/alternate-card/alternate-c
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { BlockDirective } from '../directives/block/block';
+import { TransparentButtonDirective } from '../directives/transparent-button/transparent-button';
+import { CustomMaxWidthDirective } from '../directives/custom-max-width/custom-max-width';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     LoginPage,
     SearchPage,
-    AlternateCardComponent
+    AlternateCardComponent,
+    BlockDirective,
+    TransparentButtonDirective,
+    CustomMaxWidthDirective
   ],
   imports: [
     BrowserModule,

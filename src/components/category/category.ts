@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 /**
  * Generated class for the CategoryComponent component.
@@ -10,13 +10,25 @@ import { Component } from '@angular/core';
   selector: 'category',
   templateUrl: 'category.html'
 })
-export class CategoryComponent {
+export class CategoryComponent implements OnInit {
 
   text: string;
+  @Input() image;
+  @Input() name;
+  imgPlaceholder = '../../assets/imgs/category_background.png';
 
   constructor() {
     console.log('Hello CategoryComponent Component');
     this.text = 'Hello World';
+  }
+
+  initialize(object, placeholder) {
+    return (!object) ? placeholder : object;
+  }
+
+  ngOnInit() {
+    this.image = this.initialize(this.image, this.imgPlaceholder);
+    this.name = this.initialize(this.name, 'Category type');
   }
 
 }

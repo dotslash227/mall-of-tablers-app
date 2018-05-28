@@ -9,6 +9,19 @@ category {
         }
     }
 
+    .image {
+        width: 100%;
+        overflow:hidden;
+        border-radius: 5px;
+        position: relative;
+        height: 200px;
+
+        img {
+            position: absolute;
+            width: 100%;
+        }
+    }
+
     .content {
         display: flex;
         justify-content: space-between;
