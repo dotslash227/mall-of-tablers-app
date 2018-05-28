@@ -1,0 +1,44 @@
+profile-modal {
+  @extend .relative;
+  .container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  background: rgba(0, 0, 0, 0.35);
+  .mini-profile-wrapper {
+    @extend .absolute;
+    height: 50%;
+    bottom: 0;
+    background: color($colors, primary);
+    width: 100%;
+    z-index: 9999;
+    .profile-pic {
+      background: color($colors, light);
+      overflow: hidden;
+      width: 150px;
+      height: 150px;
+      border-radius: 150px;
+      transform: translateY(-50%);
+      margin: 0 auto;
+    }
+    .content {
+      width: 100%;
+      height: 100%;
+      transform: translateY(-75px);
+
+      & * {
+        color: color($colors, light);
+      }
+
+      .title {
+          span {
+              display: inline-block;
+              vertical-align: middle;
+              padding:0 2px;
+          }
+      }
+    
+    }
+  }
+}

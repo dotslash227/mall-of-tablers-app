@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
+import { ProfileModalComponent } from '../../components/profile-modal/profile-modal';
+import { MemberListPage } from '../member-list/member-list';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +9,17 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private modalCtrl: ModalController) {
 
+  }
+
+  openProfileModal() {
+    let profileModal = this.modalCtrl.create(ProfileModalComponent);
+    profileModal.present();
+  }
+
+  openCategory() {
+    this.navCtrl.push(MemberListPage, {title: 'Member List'});
   }
 
 }

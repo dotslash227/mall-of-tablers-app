@@ -181,3 +181,40 @@ ion-menu {
         }
     }
 }
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+@mixin icon-btn-round($bg) {
+    width: 75px;
+    height: 75px;
+    background: $bg;
+    border: none;
+    border-radius: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.call {
+    @include icon-btn-round(color($colors, secondary));
+    @extend .align-center;
+    ion-icon {
+        display: inline-block;
+        font-size: 35px;
+    }
+}
+
+.message-btn {
+    @include icon-btn-round(color($colors, dark));
+    @extend .align-center;
+    ion-icon {
+        display: inline-block;
+        font-size: 35px;
+    }
+}
