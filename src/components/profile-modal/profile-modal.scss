@@ -1,5 +1,4 @@
 profile-modal {
-  @extend .relative;
   .container {
     position: fixed;
     width: 100%;
@@ -7,9 +6,9 @@ profile-modal {
   }
   background: rgba(0, 0, 0, 0.35);
   .mini-profile-wrapper {
-    @extend .absolute;
-    height: 50%;
-    bottom: 0;
+    height: 100%;
+    transform: translateY(25%);
+
     background: color($colors, primary);
     width: 100%;
     z-index: 9999;
