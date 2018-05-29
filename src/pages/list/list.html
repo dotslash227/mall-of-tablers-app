@@ -1,12 +1,9 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Category</ion-title>
-  </ion-navbar>
+  <navbar title="Business Listings"></navbar>
 </ion-header>
 
 <ion-content padding>
-  <category></category>
+    <category [image]="'./assets/imgs/consulting.jpg'" name="Consulting" (click)="openCategory()"></category>
+    <category [image]="'https://images.financialexpress.com/2014/06/it-hardware-reuters.jpg'" name="IT Hardware" (click)="openCategory()"></category>
+    <category name="Miscellaneous" (click)="openCategory()"></category>
 </ion-content>

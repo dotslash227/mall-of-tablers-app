@@ -29,7 +29,6 @@ card {
 
         .card-desc {
             .desc-item {
-                color: color($colors, light);
                 font-size: $h4-font-size;
                 font-weight: bold;
 
@@ -38,9 +37,7 @@ card {
                     font-size: $h5-font-size;
                 }
             }
-            background: color($colors, alt-light);
             padding: 2px 8px;
-            border-radius: 8px;
         }
 
         .card-footer {

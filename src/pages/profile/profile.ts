@@ -22,4 +22,6 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
+  
+
 }

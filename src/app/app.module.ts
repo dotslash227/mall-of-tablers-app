@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { ProfilePage } from '../pages/profile/profile';
 import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
+import { MemberListPage } from '../pages/member-list/member-list';
 
 import { NavbarComponent } from '../components/navbar/navbar';
 import { CardComponent } from '../components/card/card';
@@ -20,6 +21,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { BlockDirective } from '../directives/block/block';
 import { TransparentButtonDirective } from '../directives/transparent-button/transparent-button';
 import { CustomMaxWidthDirective } from '../directives/custom-max-width/custom-max-width';
+import { ProfileModalComponent } from '../components/profile-modal/profile-modal';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CustomMaxWidthDirective } from '../directives/custom-max-width/custom-m
     AlternateCardComponent,
     BlockDirective,
     TransparentButtonDirective,
-    CustomMaxWidthDirective
+    CustomMaxWidthDirective,
+    ProfileModalComponent,
+    MemberListPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,9 @@ import { CustomMaxWidthDirective } from '../directives/custom-max-width/custom-m
     ProfilePage,
     LoginPage,
     SearchPage,
-    AlternateCardComponent
+    AlternateCardComponent,
+    ProfileModalComponent,
+    MemberListPage
   ],
   providers: [
     StatusBar,

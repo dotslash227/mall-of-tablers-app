@@ -19,6 +19,8 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
+  active;
+
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
@@ -27,6 +29,12 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Business Listing', component: ListPage },
     ];
+
+    this.pages.forEach((val, i) => {
+      if (val.component == this.rootPage) {
+        this.active = val.title;
+      }
+    })
 
   }
 
@@ -43,6 +51,7 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+    this.active = page.title;
   }
 
   goToProfile() {
