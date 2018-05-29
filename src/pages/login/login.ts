@@ -15,11 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
+  showBackBtn: boolean = true;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    
+    if (this.navCtrl.length() < 2) {
+      this.showBackBtn = false;
+      console.log('hide back btn')
+    }
+  }
+
+  dismiss() {
+    this.navCtrl.pop();
   }
 
 }
