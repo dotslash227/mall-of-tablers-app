@@ -9,11 +9,13 @@
           <img src="./assets/imgs/profile.png">
       </div>
       <div>
-        JOHN DOE
+        <span>JOHN DOE</span>
+        <span>Telksys Pvt Ltd.</span>
       </div>
     </div>
+
     <div menuClose *ngFor="let p of pages" (click)="openPage(p)">
-      {{p.title}}
+      <span class="active" *ngIf="active == p.title"></span>{{p.title}}
     </div>
     <div menuClose (click)="openSearch()">
       Search
