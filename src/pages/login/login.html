@@ -20,20 +20,20 @@
   
   <div class="title">Welcome!</div>
 
-  <form class="form">
+  <form (submit)="onSubmit($event)" [formGroup]="loginForm" class="form">
 
     <div class="form-control">
       <label for="email">
         <ion-icon name="mail"></ion-icon>Email
       </label>
-      <input type="email" placeholder="john.doe@domain.com">
+      <input type="email" formControlName="email" placeholder="john.doe@domain.com">
     </div>
 
     <div class="form-control">
       <label for="password">
         <ion-icon name="lock"></ion-icon>Password
       </label>
-      <input type="password" placeholder="********">
+      <input type="password" formControlName="password" placeholder="********">
     </div>
 
     <div class="login-btn">

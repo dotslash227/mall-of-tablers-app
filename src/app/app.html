@@ -8,9 +8,9 @@
       <div class="image">
           <img src="./assets/imgs/profile.png">
       </div>
-      <div>
-        <span>JOHN DOE</span>
-        <span>Telksys Pvt Ltd.</span>
+      <div *ngIf="profileData">
+        <span>{{profileData.username}}</span>
+        <span>{{profileData.companyName}}</span>
       </div>
     </div>
 

@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -23,15 +25,18 @@ import { TransparentButtonDirective } from '../directives/transparent-button/tra
 import { CustomMaxWidthDirective } from '../directives/custom-max-width/custom-max-width';
 import { ProfileModalComponent } from '../components/profile-modal/profile-modal';
 
+import { LoginService } from '../services/login-service';
+import { AlertService } from '../services/alert-service';
+
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage,
-    ListPage,
-    NavbarComponent,
-    CardComponent,
-    CategoryComponent,
-    ReviewComponent,
+declarations: [
+  MyApp,
+  HomePage,
+  ListPage,
+  NavbarComponent,
+  CardComponent,
+  CategoryComponent,
+  ReviewComponent,
     ProfilePage,
     LoginPage,
     SearchPage,
@@ -45,6 +50,8 @@ import { ProfileModalComponent } from '../components/profile-modal/profile-modal
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -65,7 +72,9 @@ import { ProfileModalComponent } from '../components/profile-modal/profile-modal
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LoginService,
+    AlertService
   ]
 })
 export class AppModule {}
