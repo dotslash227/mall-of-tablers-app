@@ -13,6 +13,12 @@ export class BusinessListService {
     getBusinessCategories() {
         const uri = 'http://malloftablers.com/apis/business-categories';
         return this.http.get(uri);
+        // console.log(this.http.get(uri));
+    }
+
+    getUsersInBusiness(id) {
+        const uri = "http://malloftablers.com/apis/get-business-category/" + id;
+        return this.http.get(uri);
     }
 
 }

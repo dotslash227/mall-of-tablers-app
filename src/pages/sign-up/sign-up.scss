@@ -1,0 +1,134 @@
+page-sign-up {
+    $login-bg-color: #56476e;
+    $login-font-color: color($colors, light);
+    $textbox-color: #5a4b72;
+    $button-color: color($colors, dark);
+
+    $label-font-size: 14px;
+    $letter-spacing: 1px;
+
+    $content-vertical-padding: 2em;
+    $content-horizontal-padding: 3em;
+
+    $border-radius: 10px;
+
+    a {
+        color: $login-font-color;
+    }
+    
+    .background {
+        background: $login-bg-color;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .content {
+        color: $login-font-color;
+        padding: 0 $content-vertical-padding;
+
+        .title {
+            font-size: $h1-font-size;
+            font-weight: bolder;
+            letter-spacing: $letter-spacing;
+        }
+
+        .form {
+            width: 100%;
+            padding: $content-vertical-padding 0;
+
+            .form-control {
+                background: $textbox-color;
+                margin: 1em 0;
+                padding: 1em 1em 0.25em 1em;
+                border-radius: $border-radius;
+
+                label {
+                    color: color($colors, alt-light);
+                    ion-icon {
+                        margin-right: 4px;
+                        font-size: $label-font-size;
+                    }
+                    font-size: $label-font-size;
+                }
+
+                input {
+                    display: block;
+                    background: none;
+                    color: color($colors, alt-light);
+                    border: none;
+                    font-size: 16px;
+                    margin-top: 8px;
+                    letter-spacing: $letter-spacing;
+                    width: 100%;
+                    padding-bottom: 4px;
+                }
+
+            }
+
+            .login-btn {
+                text-align: center;
+                margin: 1em 0;
+
+                button {
+                    background: $button-color;
+                    color: $login-font-color;
+                    padding: 1em;
+                    border-radius: $border-radius*2;
+                    font-size: 16px;
+                    letter-spacing: $letter-spacing;
+
+                    * {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                }
+            }
+        }
+
+        .forget-password {
+            a {
+                color: color($colors, alt-light);
+                text-decoration: none;
+                letter-spacing: $letter-spacing;
+                font-size: 16px;
+                margin: 0 auto;
+                display: block;
+                text-align: center;
+            }
+        }
+
+    }
+
+    .sign-up {
+        position: fixed;
+        bottom: 1em;
+        width: 100%;
+        left: 0;
+        * {
+            color: $login-font-color;
+            text-decoration: none;
+            letter-spacing: $letter-spacing;
+            font-size: 16px;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
+        
+    }
+
+    .header {
+        padding: 3em $content-vertical-padding;
+    }
+
+    .back-btn {
+        button {
+            background: none;
+            color: color($colors, dark);
+            font-size: 2em;
+            padding: 0;
+        }
+    }
+}

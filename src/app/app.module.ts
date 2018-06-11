@@ -27,6 +27,9 @@ import { ProfileModalComponent } from '../components/profile-modal/profile-modal
 
 import { LoginService } from '../services/login-service';
 import { AlertService } from '../services/alert-service';
+import { SignUpPage } from '../pages/sign-up/sign-up';
+import { BusinessListService } from '../services/business-list-service';
+import { SignUpProvider } from '../providers/sign-up/sign-up';
 
 @NgModule({
 declarations: [
@@ -45,7 +48,8 @@ declarations: [
     TransparentButtonDirective,
     CustomMaxWidthDirective,
     ProfileModalComponent,
-    MemberListPage
+    MemberListPage,
+    SignUpPage
   ],
   imports: [
     BrowserModule,
@@ -67,14 +71,17 @@ declarations: [
     SearchPage,
     AlternateCardComponent,
     ProfileModalComponent,
-    MemberListPage
+    MemberListPage,
+    SignUpPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginService,
-    AlertService
+    AlertService,
+    BusinessListService,
+    SignUpProvider
   ]
 })
 export class AppModule {}

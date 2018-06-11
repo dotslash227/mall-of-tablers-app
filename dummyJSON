@@ -1,0 +1,31 @@
+ User Data
+-----------
+{
+"username": "lactose",
+"password": "doe1234",
+"firstName": "Nilabjo",
+"lastName": "Sanyal",
+"email": "n.sanyal@hotmail.com",
+"mobile": "9818581112",
+"companyName": "Delhi Nerds",
+"companyPhone": "888888",
+"add1": "123, Baker Street",
+"add2": "London",
+"state": "England",
+"pincode": "99999",
+"categoryId": "1"}
+
+{
+"username": "lactose234234",
+"password": "doe1234",
+"firstName": "Nilabjo",
+"lastName": "Sanyal",
+"email": "n.sanyal@hotmail.com",
+"mobile": "9818581112",
+"companyName": "Delhi Nerds",
+"companyPhone": "888888",
+"add1": "123, Baker Street",
+"add2": "London",
+"state": "England",
+"pincode": "99999",
+"categoryId": "1"}

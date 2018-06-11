@@ -20,8 +20,11 @@
     <div menuClose (click)="openSearch()">
       Search
     </div>
-    <div menuClose (click)="goToLogin()">
+    <div menuClose *ngIf="!showLogout" (click)="goToLogin()">
       Login
+    </div>
+    <div menuClose *ngIf="showLogout" (click)="goToLogout()">
+      Logout
     </div>
     <div menuClose>
       About

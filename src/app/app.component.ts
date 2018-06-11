@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -15,23 +15,48 @@ import { SearchPage } from '../pages/search/search';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+  showLogout = false;
 
   rootPage: any = LoginPage;
-  profileData;
+  profileData = {
+    username: 'jdoe321', 
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john_doe@abc.com', 
+    mobile: '8888999900', 
+    companyName: 'TEKSYS', 
+    companyPhone: '444-222', 
+    add1: '221B Baker Street', 
+    add2: 'London', 
+    state: 'England', 
+    pincode: '9999', 
+    categoryId: '2'
+  };
 
   pages: Array<{title: string, component: any}>;
 
   active;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private storage: Storage) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private storage: Storage, private events: Events) {
     this.initializeApp();
+    // this.storage.clear();
+    this.storage.get('profileData').then(
+      (data) => {
+        if (data != null || data != undefined) {
+          this.profileData = data;
+          this.nav.setRoot(HomePage);
+          this.showLogout = true;
+        }
+      }
+    )
 
-    this.storage.get('profileData').then((data) => {
+    this.events.subscribe('user:loggedin', (data) => {
+      console.log('Event user Log', data);
       this.profileData = data;
-      this.nav.setRoot(HomePage);
+      this.showLogout = true;
     });
 
-    // used for an example of ngFor and navigation
+    // used for navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Business Listing', component: ListPage },
@@ -72,4 +97,14 @@ export class MyApp {
   openSearch() {
     this.nav.push(SearchPage);
   }
+
+  updateProfileData(profileData) {
+    this.profileData = profileData;
+  }
+
+  goToLogout() {
+    this.storage.clear();
+    this.nav.setRoot(LoginPage);
+  }
+
 }

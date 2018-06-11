@@ -10,10 +10,9 @@ export class LoginService {
  
     }
  
-    login(f) {
+    login(_data) {
         const uri = "http://malloftablers.com/apis/login";
-        console.log(f);
-        return this.http.get(uri);
+        return this.http.post(uri, _data);
     }
 
     fakeLogin() {
