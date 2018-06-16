@@ -12,7 +12,11 @@
 
 
 <ion-content padding>
-    <card name="Nilabjo Sanyal" company="Tekons" address="Delhi" profileImgUri="http://kb4images.com/images/profile-pictures/38054870-profile-pictures.jpg" (click)="openProfileModal()"></card>
+  <div>
+    <!-- <card name="Nilabjo Sanyal" company="Tekons" address="Delhi" profileImgUri="http://kb4images.com/images/profile-pictures/38054870-profile-pictures.jpg" (click)="openProfileModal()"></card>
     <card name="Ankush Agarwal" company="Moonlight" address="Noida" (click)="openProfileModal()"></card>
-    <card name="Dhruv Arora" company="Delhinerds" address="Noida" (click)="openProfileModal()"></card>
+    <card name="Dhruv Arora" company="Delhinerds" address="Noida" (click)="openProfileModal()"></card> -->
+
+    <card *ngFor="let detail of cardDetails" [name]="detail.userLastName" (click)="openProfileModal(detail)" [company]="detail.companyName" [address]="detail.mobile"></card>
+  </div>
 </ion-content>

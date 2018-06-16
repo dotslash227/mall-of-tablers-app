@@ -11,17 +11,24 @@ page-sign-up {
     $content-horizontal-padding: 3em;
 
     $border-radius: 10px;
-
+    .item-cover {
+        width: 1px !important;
+        height: 1px !important;
+      }
     a {
         color: $login-font-color;
     }
     
-    .background {
-        background: $login-bg-color;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+    // .background {
+    //     background: $login-bg-color;
+    //     position: fixed;
+    //     width: 100%;
+    //     height: 100%;
+    //     z-index: -1;
+    // }
+
+    ion-content {
+        background: $login-bg-color !important;
     }
 
     .content {

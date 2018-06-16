@@ -16,6 +16,11 @@ import { BusinessListService } from '../../services/business-list-service';
   templateUrl: 'member-list.html',
 })
 export class MemberListPage {
+  cardDetails;
+  fullName:string = 'John Doe';
+  company:string = 'ABC';
+  mobile:string = '981818';
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private businessListService: BusinessListService) {
     
   }
@@ -27,12 +32,23 @@ export class MemberListPage {
 
   getUsersInCategory(id) {
     // Gets users in the Business API Failing
-    this.businessListService.getUsersInBusiness(id).subscribe(res => console.log(res), error => console.log(error));
+    this.businessListService.getUsersInBusiness(id)
+    .subscribe(res => {
+      this.cardDetails = res;
+      this.fullName = res['userFirstName'] + res['userLastName'];
+      this.company = res['company'];
+      this.mobile = res['mobile'];
+      console.log(this.cardDetails);
+    }, error => console.log(error));
   }
 
-  openProfileModal() {
-    let profileModal = this.modalCtrl.create(ProfileModalComponent);
+  openProfileModal(details) {
+    let profileModal = this.modalCtrl.create(ProfileModalComponent, {memberDetails: details});
     profileModal.present();
+  }
+
+  makeName(details) {
+    return details.firstName + details.lastName;
   }
 
 }

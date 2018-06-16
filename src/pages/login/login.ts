@@ -87,7 +87,7 @@ export class LoginPage {
   }
 
   goToSignUp() {
-    this.navCtrl.setRoot(SignUpPage);
+    this.navCtrl.push(SignUpPage);
   }
 
 }

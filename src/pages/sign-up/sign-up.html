@@ -4,133 +4,125 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<div class="background">
-</div>
-<div class="header">
-<div class="back-btn" *ngIf="showBackBtn">
-  <button (click)="dismiss()">
-    <ion-icon name="arrow-back"></ion-icon>
-  </button>
-</div>
-</div>
 
-<ion-content padding style="background:none">
+<ion-content style="background:none">
+  <div class="header">
+    <div class="back-btn">
+      <button (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </div>
+  </div>
+
   <div class="content">
 
-  <div class="title">Sign Up!</div>
+    <div class="title">Sign Up!</div>
 
-  <form class="form" (submit)="onSubmit($event)" [formGroup]="signUpForm">
+    <form class="form" (submit)="onSubmit($event)" [formGroup]="signUpForm">
 
-    <div class="form-control">
-      <label for="username">
-        <ion-icon name="person"></ion-icon>Username
-      </label>
-      <input type="text" formControlName="username" placeholder="john.doe">
-    </div>
+      <div class="form-control">
+        <label for="username">
+          <ion-icon name="person"></ion-icon>Username
+        </label>
+        <input type="text" formControlName="username" placeholder="john.doe">
+      </div>
 
-    <div class="form-control">
-      <label for="password">
-        <ion-icon name="lock"></ion-icon>Password
-      </label>
-      <input type="password" formControlName="password" placeholder="********">
-    </div>
+      <div class="form-control">
+        <label for="password">
+          <ion-icon name="lock"></ion-icon>Password
+        </label>
+        <input type="password" formControlName="password" placeholder="********">
+      </div>
 
-    <div class="form-control">
-      <label for="firstName">
-        <ion-icon name="people"></ion-icon>First Name
-      </label>
-      <input type="text" formControlName="firstName" placeholder="John">
-    </div>
-    
-    <div class="form-control">
-      <label for="lastName">
-        <ion-icon name="people"></ion-icon>Last Name
-      </label>
-      <input type="text" formControlName="lastName" placeholder="Doe">
-    </div>
+      <div class="form-control">
+        <label for="firstName">
+          <ion-icon name="people"></ion-icon>First Name
+        </label>
+        <input type="text" formControlName="firstName" placeholder="John">
+      </div>
 
-    <div class="form-control">
-      <label for="email">
-        <ion-icon name="mail"></ion-icon>Email
-      </label>
-      <input type="text" formControlName="email" placeholder="john.doe@gmail.com">
-    </div>
+      <div class="form-control">
+        <label for="lastName">
+          <ion-icon name="people"></ion-icon>Last Name
+        </label>
+        <input type="text" formControlName="lastName" placeholder="Doe">
+      </div>
 
-    <div class="form-control">
-      <label for="mobile">
-        <ion-icon name="phone-portrait"></ion-icon>Mobile
-      </label>
-      <input type="number" formControlName="mobile" placeholder="888-990-87">
-    </div>
+      <div class="form-control">
+        <label for="email">
+          <ion-icon name="mail"></ion-icon>Email
+        </label>
+        <input type="text" formControlName="email" placeholder="john.doe@gmail.com">
+      </div>
 
-    <div class="form-control">
-      <label for="companyName">
-        <ion-icon name="briefcase"></ion-icon>Company Name
-      </label>
-      <input type="text" formControlName="companyName" placeholder="Octa Corp.">
-    </div>
+      <div class="form-control">
+        <label for="mobile">
+          <ion-icon name="phone-portrait"></ion-icon>Mobile
+        </label>
+        <input type="number" formControlName="mobile" placeholder="888-990-87">
+      </div>
 
-    <div class="form-control">
-      <label for="companyPhone">
-        <ion-icon name="call"></ion-icon>Company Phone
-      </label>
-      <input type="number" formControlName="companyPhone" placeholder="999-992-33">
-    </div>
+      <div class="form-control">
+        <label for="companyName">
+          <ion-icon name="briefcase"></ion-icon>Company Name
+        </label>
+        <input type="text" formControlName="companyName" placeholder="Octa Corp.">
+      </div>
 
-    <div class="form-control">
-      <label for="add1">
-        <ion-icon name="map"></ion-icon>Address Line 1
-      </label>
-      <input type="text" formControlName="add1" placeholder="221B Baker Street">
-    </div>
+      <div class="form-control">
+        <label for="companyPhone">
+          <ion-icon name="call"></ion-icon>Company Phone
+        </label>
+        <input type="number" formControlName="companyPhone" placeholder="999-992-33">
+      </div>
 
-    <div class="form-control">
-      <label for="add2">
-        <ion-icon name="map"></ion-icon>Address Line 2
-      </label>
-      <input type="text" formControlName="add2" placeholder="Non Fictional Town">
-    </div>
+      <div class="form-control">
+        <label for="add1">
+          <ion-icon name="map"></ion-icon>Address Line 1
+        </label>
+        <input type="text" formControlName="add1" placeholder="221B Baker Street">
+      </div>
 
-    <div class="form-control">
-      <label for="state">
-        <ion-icon name="globe"></ion-icon>State
-      </label>
-      <input type="text" formControlName="state" placeholder="Willbury">
-    </div>
+      <div class="form-control">
+        <label for="add2">
+          <ion-icon name="map"></ion-icon>Address Line 2
+        </label>
+        <input type="text" formControlName="add2" placeholder="Non Fictional Town">
+      </div>
 
-    <div class="form-control">
-      <label for="pincode">
-        <ion-icon name="map-marker"></ion-icon>PINCODE
-      </label>
-      <input type="number" formControlName="pincode" placeholder="888999">
-    </div>
+      <div class="form-control">
+        <label for="state">
+          <ion-icon name="globe"></ion-icon>State
+        </label>
+        <input type="text" formControlName="state" placeholder="Willbury">
+      </div>
 
-    <div class="form-control">
-      <label for="categoryId">
-        <ion-icon name="more"></ion-icon>Category
-      </label>
-      <ion-select formControlName="categoryId" placeholder="Select Category">
-        <ion-option value={{category.id}} *ngFor="let category of categories">{{category.name}}</ion-option>
-      </ion-select>
-    </div>
-<ion-row align-items-center>
-  <ion-col text-center>
-    <div class="login-btn">
-      
-      <button type="submit">
-        <span>Sign Up</span>
-        <ion-icon name="arrow-forward"></ion-icon>
-      </button>
+      <div class="form-control">
+        <label for="pincode">
+          <ion-icon name="map-marker"></ion-icon>PINCODE
+        </label>
+        <input type="number" formControlName="pincode" placeholder="888999">
+      </div>
 
-    </div>
-  </ion-col>
-  <ion-col text-center>
-    <h5><a href="#">Login</a></h5>
-  </ion-col>
-</ion-row>
-    
+      <div class="form-control">
+        <label for="categoryId">
+          <ion-icon name="more"></ion-icon>Category
+        </label>
+        <ion-select formControlName="categoryId" placeholder="Select Category">
+          <ion-option value={{category.id}} *ngFor="let category of categories">{{category.name}}</ion-option>
+        </ion-select>
+      </div>
+      <div class="login-btn">
 
-  </form>
+        <button type="submit">
+          <span>Sign Up</span>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+
+      </div>
+
+
+    </form>
 
   </div>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the ProfileModalComponent component.
@@ -14,10 +14,14 @@ import { ViewController } from 'ionic-angular';
 export class ProfileModalComponent {
 
   text: string;
+  memberDetails;
 
-  constructor(private viewCtrl: ViewController) {
+  constructor(private viewCtrl: ViewController, private navParams: NavParams) {
     console.log('Hello ProfileModalComponent Component');
     this.text = 'Hello World';
+
+    this.memberDetails = this.navParams.get('memberDetails');
+    console.log(this.memberDetails);
   }
 
   closeModal() {
