@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { CallNumber } from '@ionic-native/call-number';
 
 /**
  * Generated class for the ProfilePage page.
@@ -31,7 +32,7 @@ export class ProfilePage {
     categoryId: '2'
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, private callNumber: CallNumber) {
   }
 
   ionViewDidLoad() {
@@ -45,7 +46,5 @@ export class ProfilePage {
       this.profileData[key] = newData[key];
     }
   }
-
-  
 
 }

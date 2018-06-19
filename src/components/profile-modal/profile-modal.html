@@ -29,7 +29,7 @@
         <ion-icon name="md-pin"></ion-icon>
       </span>
       <span class="address">
-        129, Shanti Nagar, West Janakpuri, Delhi
+        {{memberDetails.addLine1}}, {{memberDetails.addLine2}}
       </span>
     </h5>
 
@@ -38,13 +38,13 @@
         <ion-icon name="md-globe"></ion-icon>
       </span>
       <span>
-        India
+        {{memberDetails.state}}
       </span>
     </h3>
 
     <ion-row class="mt-1" justify-content-around>
       <ion-col>
-        <button class="call">
+        <button class="call" (click)="openDialer(memberDetails.mobile)">
           <ion-icon name="call"></ion-icon>
         </button>
       </ion-col>

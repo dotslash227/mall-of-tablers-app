@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { CallNumber } from '@ionic-native/call-number';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -30,6 +31,14 @@ import { AlertService } from '../services/alert-service';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { BusinessListService } from '../services/business-list-service';
 import { SignUpProvider } from '../providers/sign-up/sign-up';
+
+class CallNumberMock extends CallNumber {
+  callNumber(options) {
+    return new Promise((resolve, reject) => {
+      resolve("Number will be called!");
+    })
+  }
+}
 
 @NgModule({
 declarations: [
@@ -81,7 +90,8 @@ declarations: [
     LoginService,
     AlertService,
     BusinessListService,
-    SignUpProvider
+    SignUpProvider,
+    { provide: CallNumber, useClass: CallNumberMock }
   ]
 })
 export class AppModule {}
