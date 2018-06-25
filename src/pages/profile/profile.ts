@@ -38,13 +38,17 @@ export class ProfilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
     this.storage.get('profileData')
-    .then((data) => this.setProfileData(data));
+    .then((data) => {
+      this.setProfileData(data);
+      console.log(data);
+    });
   }
 
   setProfileData(newData) {
     for (let key in newData) {
       this.profileData[key] = newData[key];
     }
+    console.log(this.profileData['profilePic']);
   }
 
 }

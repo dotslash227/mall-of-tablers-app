@@ -30,7 +30,8 @@ export class MyApp {
     add2: 'London', 
     state: 'England', 
     pincode: '9999', 
-    categoryId: '2'
+    categoryId: '2',
+    profilePic: './assets/imgs/profile.png'
   };
 
   pages: Array<{title: string, component: any}>;
@@ -50,10 +51,15 @@ export class MyApp {
       }
     )
 
+    // Update profile data
     this.events.subscribe('user:loggedin', (data) => {
       console.log('Event user Log', data);
       this.profileData = data;
       this.showLogout = true;
+
+      if (this.profileData['profilePic'] === null || this.profileData['profilePic'] === "null") {
+        this.profileData['profilePic'] = './assets/imgs/profile.png';
+      }
     });
 
     // used for navigation

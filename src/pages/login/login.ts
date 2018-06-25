@@ -59,6 +59,9 @@ export class LoginPage {
           } else {
             this.profileData['email'] = res['email'];
             this.profileData['username'] = loginData['username'];
+            this.profileData['firstName'] = res['firstName'];
+            this.profileData['lastName'] = res['lastName'];
+            this.profileData['profilePic'] = res['profilePic'];
             this.storage.set('profileData', this.profileData);
             this.events.publish('user:loggedin', this.profileData);
             this.navCtrl.setRoot(HomePage);
