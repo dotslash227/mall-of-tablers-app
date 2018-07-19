@@ -16,22 +16,31 @@ import { BusinessListService } from '../../services/business-list-service';
   templateUrl: 'member-list.html',
 })
 export class MemberListPage {
+  cardDetails;
+  showCard: boolean = false;
+  fullName:string;
+  company:string = 'ABC';
+  mobile:string = '981818';
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private businessListService: BusinessListService) {
-    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MemberListPage');
+    // Get business ID from list.ts
     this.getUsersInCategory(this.navParams.get('businessId'));
   }
 
   getUsersInCategory(id) {
-    // Gets users in the Business API Failing
-    this.businessListService.getUsersInBusiness(id).subscribe(res => console.log(res), error => console.log(error));
+    this.businessListService.getUsersInBusiness(id)
+    .subscribe(res => {
+      this.cardDetails = res;
+      console.log(this.cardDetails);
+    }, error => console.log(error));
   }
 
-  openProfileModal() {
-    let profileModal = this.modalCtrl.create(ProfileModalComponent);
+  openProfileModal(details) {
+    let profileModal = this.modalCtrl.create(ProfileModalComponent, {memberDetails: details});
     profileModal.present();
   }
 

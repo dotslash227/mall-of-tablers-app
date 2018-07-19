@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 import { ProfilePage } from '../pages/profile/profile';
 import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
+import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +31,8 @@ export class MyApp {
     add2: 'London', 
     state: 'England', 
     pincode: '9999', 
-    categoryId: '2'
+    categoryId: '2',
+    profilePic: './assets/imgs/profile.png'
   };
 
   pages: Array<{title: string, component: any}>;
@@ -50,16 +52,24 @@ export class MyApp {
       }
     )
 
+    // Update profile data
     this.events.subscribe('user:loggedin', (data) => {
       console.log('Event user Log', data);
       this.profileData = data;
       this.showLogout = true;
+
+      if (this.profileData['profilePic'] === null || this.profileData['profilePic'] === "null") {
+        this.profileData['profilePic'] = './assets/imgs/profile.png';
+      }
     });
 
     // used for navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Business Listing', component: ListPage },
+      { title: 'Terms of Use', component: LoremIpsumPage },
+      { title: 'Privacy Policy', component: LoremIpsumPage },
+      { title: 'About Us', component: LoremIpsumPage }
     ];
 
     this.pages.forEach((val, i) => {
@@ -82,7 +92,7 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.setRoot(page.component, {title: page.title});
     this.active = page.title;
   }
 
