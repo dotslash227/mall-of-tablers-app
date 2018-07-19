@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from '../../services/login-service';
 import { AlertService } from '../../services/alert-service';
@@ -41,7 +41,7 @@ export class LoginPage {
     categoryId: '2',
 };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService, private alertService: AlertService, private storage: Storage, private events: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService, private alertService: AlertService, private storage: Storage, private events: Events, private loadingCtrl: LoadingController) {
   }
 
   onSubmit(e) {
@@ -53,20 +53,29 @@ export class LoginPage {
         (res) => {
           console.log('Login Data: ', loginData);
           console.log('Login response', res);
+          const loadingOptions = {
+            spinner: 'dots',
+          }
+          let loading = this.loadingCtrl.create(loadingOptions);
 
           if (res['status'] == "failed") {
+            // Dismiss loading controller
+            loading.dismiss();
             this.alertService.presentAlert('Invalid Login', 'Login credentials are incorrect.');
           } else {
+            // Dismiss loading controller
+            loading.dismiss();
             this.profileData['email'] = res['email'];
             this.profileData['username'] = loginData['username'];
             this.storage.set('profileData', this.profileData);
             this.events.publish('user:loggedin', this.profileData);
             this.navCtrl.setRoot(HomePage);
           }
+          
         },
         (error) => {
           console.log(error.error);
-          this.alertService.presentAlert(error.status, error.error)
+          this.alertService.presentAlert(error.status.toString(), 'Error! Check console.')
         });
 
     // Dummy login service
@@ -87,7 +96,7 @@ export class LoginPage {
   }
 
   goToSignUp() {
-    this.navCtrl.setRoot(SignUpPage);
+    this.navCtrl.push(SignUpPage);
   }
 
 }
