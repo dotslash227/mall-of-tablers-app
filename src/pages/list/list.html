@@ -6,5 +6,13 @@
     <!-- <category [image]="'./assets/imgs/consulting.jpg'" name="Consulting" (click)="openCategory()"></category>
     <category [image]="'https://images.financialexpress.com/2014/06/it-hardware-reuters.jpg'" name="IT Hardware" (click)="openCategory()"></category>
     <category name="Miscellaneous" (click)="openCategory()"></category> -->
+
+    <div class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+
     <category *ngFor="let business of businessList" name={{business.name}} (click)="openCategory(business.id)"></category>
 </ion-content>

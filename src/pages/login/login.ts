@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from '../../services/login-service';
 import { AlertService } from '../../services/alert-service';
@@ -20,6 +20,7 @@ import { SignUpPage } from '../sign-up/sign-up';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  loading;
 
   showBackBtn: boolean = true;
   loginForm = new FormGroup({
@@ -41,16 +42,20 @@ export class LoginPage {
     categoryId: '2',
 };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService, private alertService: AlertService, private storage: Storage, private events: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService, private alertService: AlertService, private storage: Storage, private events: Events, private loadingCtrl: LoadingController) {
   }
 
   onSubmit(e) {
     e.preventDefault();
 
+    this.presentLoading();
+
     const loginData = this.loginForm.value;
     this.loginService.login(loginData)
       .subscribe(
         (res) => {
+          this.dismissLoading();
+
           console.log('Login Data: ', loginData);
           console.log('Login response', res);
 
@@ -68,6 +73,8 @@ export class LoginPage {
           }
         },
         (error) => {
+          this.dismissLoading();
+
           console.log(error.error);
           this.alertService.presentAlert(error.status, error.error)
         });
@@ -78,8 +85,8 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
-    
-    if (this.navCtrl.length() < 2) {
+    console.log(this.navCtrl.length());
+    if (!this.navCtrl.canGoBack()) {
       this.showBackBtn = false;
       console.log('hide back btn');
     }
@@ -93,4 +100,16 @@ export class LoginPage {
     this.navCtrl.push(SignUpPage);
   }
 
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'dots',
+      content: ''
+    })
+
+    this.loading.present();
+  }
+
+  dismissLoading() {
+    this.loading.dismiss();
+  }
 }

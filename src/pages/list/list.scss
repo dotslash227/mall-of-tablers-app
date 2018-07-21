@@ -1,3 +1,40 @@
 page-list {
 
+    .loader {
+        display: flex;
+        justify-content: center;
+        div {
+            margin: 2px 2px;
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            background: color($colors, primary);
+
+            animation-name: fadeInAndOut;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+
+            &:nth-of-type(1) {
+                animation-delay: 0s;
+            } 
+            &:nth-of-type(2) {
+                animation-delay: 1s;
+            } 
+            &:nth-of-type(3) {
+                animation-delay: 3s;
+            } 
+        }
+    }
+    
+    @keyframes fadeInAndOut {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
 }

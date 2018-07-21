@@ -91,7 +91,8 @@ declarations: [
     AlertService,
     BusinessListService,
     SignUpProvider,
-    { provide: CallNumber, useClass: CallNumberMock }
+    CallNumber,
+    // { provide: CallNumber, useClass: CallNumberMock }
   ]
 })
 export class AppModule {}

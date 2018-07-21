@@ -51,6 +51,7 @@ export class ProfileModalComponent {
   }
 
   openDialer(number) {
+    // console.log(number);
     this.callNumber.callNumber(number, true)
     .then(res => console.log('Launch Dialer', res))
     .catch(err => console.log(err));
