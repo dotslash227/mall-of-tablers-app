@@ -26,7 +26,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.profileImgUri = (!this.profileImgUri) ? '../../assets/imgs/profile.png' : this.profileImgUri;
+    this.profileImgUri = (!this.profileImgUri || this.profileImgUri == null || this.profileImgUri == 'null') ? '../../assets/imgs/profile.png' : 'http://malloftablers.com/' + this.profileImgUri;
   }
 
 }

@@ -41,8 +41,11 @@ export class ProfileModalComponent {
         state:"Delhi",
         userFirstName:"Ishita",
         userId:1,
-        userLastName:"Royal"
+        userLastName:"Royal",
+        profilePic: "../../assets/imgs/profile.png"
       }
+    } else {
+      this.memberDetails.profilePic = this.memberDetails.profilePic != 'null' ? 'http://malloftablers.com/' + this.memberDetails.profilePic : './assets/imgs/profile.png';
     }
   }
 

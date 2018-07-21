@@ -31,6 +31,8 @@ import { AlertService } from '../services/alert-service';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { BusinessListService } from '../services/business-list-service';
 import { SignUpProvider } from '../providers/sign-up/sign-up';
+import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
+import { UserService } from '../services/user-service';
 
 class CallNumberMock extends CallNumber {
   callNumber(options) {
@@ -49,16 +51,17 @@ declarations: [
   CardComponent,
   CategoryComponent,
   ReviewComponent,
-    ProfilePage,
-    LoginPage,
-    SearchPage,
-    AlternateCardComponent,
-    BlockDirective,
-    TransparentButtonDirective,
-    CustomMaxWidthDirective,
-    ProfileModalComponent,
-    MemberListPage,
-    SignUpPage
+  ProfilePage,
+  LoginPage,
+  SearchPage,
+  AlternateCardComponent,
+  BlockDirective,
+  TransparentButtonDirective,
+  CustomMaxWidthDirective,
+  ProfileModalComponent,
+  MemberListPage,
+  SignUpPage,
+  LoremIpsumPage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,8 @@ declarations: [
     AlternateCardComponent,
     ProfileModalComponent,
     MemberListPage,
-    SignUpPage
+    SignUpPage,
+    LoremIpsumPage
   ],
   providers: [
     StatusBar,
@@ -92,6 +96,7 @@ declarations: [
     BusinessListService,
     SignUpProvider,
     CallNumber,
+    UserService
     // { provide: CallNumber, useClass: CallNumberMock }
   ]
 })

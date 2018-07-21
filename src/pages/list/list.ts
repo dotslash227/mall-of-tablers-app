@@ -10,18 +10,43 @@ import { BusinessListService } from '../../services/business-list-service';
 export class ListPage {
 
   businessList = [];
+  totalItems = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private businessListService: BusinessListService) {
-  }
-
-  ionViewDidLoad() {
     this.getBusinessList();
   }
 
+  ionViewDidLoad() {
+    
+  }
+
   getBusinessList() {
+
     this.businessListService.getBusinessCategories().subscribe(
-      (res) => Object.keys(res).map((key, i) => this.businessList[i] = res[key])
+      (res) => Object.keys(res).map((key, i) => {
+        this.totalItems[i] = res[key];
+        this.businessList = this.totalItems.slice(0, Math.round(this.totalItems.length / 2));
+      })
     );
+  }
+
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      
+      if (this.businessList.length != this.totalItems.length) {
+        for (let i = Math.round(this.totalItems.length / 2); i < this.totalItems.length; i++) {
+          this.businessList.push(this.totalItems[i])
+        }
+      } else {
+        infiniteScroll.enable(false);
+      }
+      
+
+      console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 500);
   }
 
   openCategory(id) {

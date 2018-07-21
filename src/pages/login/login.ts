@@ -58,10 +58,18 @@ export class LoginPage {
 
           console.log('Login Data: ', loginData);
           console.log('Login response', res);
+          const loadingOptions = {
+            spinner: 'dots',
+          }
+          let loading = this.loadingCtrl.create(loadingOptions);
 
           if (res['status'] == "failed") {
+            // Dismiss loading controller
+            loading.dismiss();
             this.alertService.presentAlert('Invalid Login', 'Login credentials are incorrect.');
           } else {
+            // Dismiss loading controller
+            loading.dismiss();
             this.profileData['email'] = res['email'];
             this.profileData['username'] = loginData['username'];
             this.profileData['firstName'] = res['firstName'];
@@ -71,12 +79,13 @@ export class LoginPage {
             this.events.publish('user:loggedin', this.profileData);
             this.navCtrl.setRoot(HomePage);
           }
+          
         },
         (error) => {
           this.dismissLoading();
 
           console.log(error.error);
-          this.alertService.presentAlert(error.status, error.error)
+          this.alertService.presentAlert(error.status.toString(), 'Error! Check console.')
         });
 
     // Dummy login service
