@@ -39,9 +39,9 @@ export class ProfileModalComponent {
         mobile:9311153299,
         pincode:11001,
         state:"Delhi",
-        userFirstName:"Ishita",
+        userFirstName:"John",
         userId:1,
-        userLastName:"Royal"
+        userLastName:"Doe"
       }
     }
   }
