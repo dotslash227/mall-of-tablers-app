@@ -41,8 +41,11 @@ export class ProfileModalComponent {
         state:"Delhi",
         userFirstName:"John",
         userId:1,
-        userLastName:"Doe"
+        userLastName:"Doe",
+        profilePic: "../../assets/imgs/profile.png"
       }
+    } else {
+      this.memberDetails.profilePic = this.memberDetails.profilePic != 'null' ? 'http://malloftablers.com/' + this.memberDetails.profilePic : './assets/imgs/profile.png';
     }
   }
 
@@ -51,6 +54,7 @@ export class ProfileModalComponent {
   }
 
   openDialer(number) {
+    // console.log(number);
     this.callNumber.callNumber(number, true)
     .then(res => console.log('Launch Dialer', res))
     .catch(err => console.log(err));

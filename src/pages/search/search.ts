@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormGroup, FormControl } from '@angular/forms';
+import { SearchProvider } from "../../providers/search/search";
 
 /**
  * Generated class for the SearchPage page.
@@ -14,8 +16,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'search.html',
 })
 export class SearchPage {
+  searchForm = new FormGroup({
+    searchTerm: new FormControl()
+  })
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private searchProvider: SearchProvider) {
   }
 
   ionViewDidLoad() {
@@ -24,6 +29,18 @@ export class SearchPage {
 
   dismiss() {
     this.navCtrl.pop();
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    console.log(this.searchForm.value);
+    let searchTerm = this.searchForm.value;
+
+    this.searchProvider.searchFor(searchTerm)
+    .subscribe((res) => {
+      console.log(res);
+    }, error => console.log(error))
   }
 
 }

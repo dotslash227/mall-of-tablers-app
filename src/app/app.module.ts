@@ -32,6 +32,8 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
 import { BusinessListService } from '../services/business-list-service';
 import { SignUpProvider } from '../providers/sign-up/sign-up';
 import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
+import { UserService } from '../services/user-service';
+import { SearchProvider } from '../providers/search/search';
 
 class CallNumberMock extends CallNumber {
   callNumber(options) {
@@ -94,7 +96,10 @@ declarations: [
     AlertService,
     BusinessListService,
     SignUpProvider,
-    { provide: CallNumber, useClass: CallNumberMock }
+    CallNumber,
+    UserService,
+    SearchProvider
+    // { provide: CallNumber, useClass: CallNumberMock }
   ]
 })
 export class AppModule {}

@@ -18,7 +18,7 @@
     <card name="Dhruv Arora" company="Delhinerds" address="Noida" (click)="openProfileModal()"></card> -->
 
     
-    <card *ngFor="let detail of cardDetails" [name]="detail.userFirstName+' '+detail.userLastName" (click)="openProfileModal(detail)" [company]="detail.companyName" [address]="detail.city+', '+detail.pincode"></card>
+    <card *ngFor="let detail of cardDetails" [name]="detail.userFirstName+' '+detail.userLastName" (click)="openProfileModal(detail)" [company]="detail.companyName" [address]="detail.city+', '+detail.pincode" [profileImgUri]="detail.profilePic"></card>
     
   </div>
 </ion-content>

@@ -20,6 +20,7 @@ import { SignUpPage } from '../sign-up/sign-up';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  loading;
 
   showBackBtn: boolean = true;
   loginForm = new FormGroup({
@@ -47,10 +48,14 @@ export class LoginPage {
   onSubmit(e) {
     e.preventDefault();
 
+    this.presentLoading();
+
     const loginData = this.loginForm.value;
     this.loginService.login(loginData)
       .subscribe(
         (res) => {
+          this.dismissLoading();
+
           console.log('Login Data: ', loginData);
           console.log('Login response', res);
           const loadingOptions = {
@@ -77,6 +82,8 @@ export class LoginPage {
           
         },
         (error) => {
+          this.dismissLoading();
+
           console.log(error.error);
           this.alertService.presentAlert(error.status.toString(), 'Error! Check console.')
         });
@@ -87,8 +94,8 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
-    
-    if (this.navCtrl.length() < 2) {
+    console.log(this.navCtrl.length());
+    if (!this.navCtrl.canGoBack()) {
       this.showBackBtn = false;
       console.log('hide back btn');
     }
@@ -102,4 +109,16 @@ export class LoginPage {
     this.navCtrl.push(SignUpPage);
   }
 
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'dots',
+      content: ''
+    })
+
+    this.loading.present();
+  }
+
+  dismissLoading() {
+    this.loading.dismiss();
+  }
 }
