@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Generated class for the AlternateCardComponent component.
@@ -13,10 +13,23 @@ import { Component } from '@angular/core';
 export class AlternateCardComponent {
 
   text: string;
+  @Input() title;
+  @Input() imgSrc;
+  @Input() companyName;
 
   constructor() {
     console.log('Hello AlternateCardComponent Component');
     this.text = 'Hello World';
+
+    if (this.title == undefined || this.title == null) {
+      this.title = 'Lorem Ipsum tu et!';
+    }
+
+    this.imgSrc = this.imgSrc == undefined || this.imgSrc == null ? '../../assets/imgs/thumbnail.png' : this.imgSrc;
+
+    if (this.companyName == undefined || this.companyName == null) {
+      this.companyName = 'Lorem Ipsum';
+    }
   }
 
 }

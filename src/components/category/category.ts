@@ -15,15 +15,18 @@ export class CategoryComponent implements OnInit {
   text: string;
   @Input() image;
   @Input() name;
+  @Input() count;
   imgPlaceholder = '../../assets/imgs/category_background.png';
+  @Input() sponsored;
 
   constructor() {
     console.log('Hello CategoryComponent Component');
     this.text = 'Hello World';
+    this.sponsored = this.sponsored == undefined ? false : true;
   }
 
   initialize(object, placeholder) {
-    return (!object) ? placeholder : object;
+    return (!object || object == null) ? placeholder : object;
   }
 
   ngOnInit() {

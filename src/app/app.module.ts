@@ -33,6 +33,8 @@ import { BusinessListService } from '../services/business-list-service';
 import { SignUpProvider } from '../providers/sign-up/sign-up';
 import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
 import { UserService } from '../services/user-service';
+import { SearchProvider } from '../providers/search/search';
+import { AdvertProvider } from '../providers/advert/advert';
 
 class CallNumberMock extends CallNumber {
   callNumber(options) {
@@ -96,7 +98,9 @@ declarations: [
     BusinessListService,
     SignUpProvider,
     CallNumber,
-    UserService
+    UserService,
+    SearchProvider,
+    AdvertProvider
     // { provide: CallNumber, useClass: CallNumberMock }
   ]
 })

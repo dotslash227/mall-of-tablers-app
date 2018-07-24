@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { FormGroup, FormControl } from '@angular/forms';
+import { SearchProvider } from "../../providers/search/search";
+import { ProfileModalComponent } from '../../components/profile-modal/profile-modal';
+import { MemberListPage } from '../member-list/member-list';
+import { UserService } from '../../services/user-service';
 
 /**
  * Generated class for the SearchPage page.
@@ -14,8 +19,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'search.html',
 })
 export class SearchPage {
+  searchForm = new FormGroup({
+    searchTerm: new FormControl()
+  })
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  noCategoriesFound: boolean = false;
+  noUsersFound: boolean = false;
+  showList: boolean = false;
+  categoriesRes;
+  usersRes;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private searchProvider: SearchProvider, private modalCtrl: ModalController, private userService: UserService) {
   }
 
   ionViewDidLoad() {
@@ -24,6 +38,48 @@ export class SearchPage {
 
   dismiss() {
     this.navCtrl.pop();
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    console.log(this.searchForm.value);
+    let searchTerm = this.searchForm.value;
+
+    this.searchProvider.searchFor(searchTerm)
+    .subscribe((res) => {
+      this.noCategoriesFound = false;
+      this.noUsersFound = false;
+
+      console.log(res);
+
+      this.categoriesRes = res['categories'];
+      this.usersRes = res['users'];
+      this.showList = true;
+      if (this.categoriesRes.length == 0) {
+        this.noCategoriesFound = true;
+      }
+      if (this.usersRes.length == 0) {
+        this.noUsersFound = true;
+      }
+    }, error => console.log(error))
+  }
+
+  openCategory(id) {
+    this.navCtrl.push(MemberListPage, {businessId: id});
+  }
+
+  openProfileModal(id) {
+    this.userService.getUserDetails(id)
+    .subscribe((res) => {
+      let details = res;
+      details['userFirstName'] = details['firstName'];
+      delete details['firstName'];
+      details['userLastName'] = details['lastName'];
+      delete details['lastName'];
+      let profileModal = this.modalCtrl.create(ProfileModalComponent, {memberDetails: res});
+      profileModal.present();
+    }, error => console.log(error));
   }
 
 }

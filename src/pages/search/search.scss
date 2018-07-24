@@ -2,6 +2,27 @@ page-search {
   ion-content {
     padding: 2em;
   }
+
+  .search-container {
+    .close-btn {
+      background: color($colors, secondary);
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      display: flex;
+      justify-content: center;
+      border-radius: 40px;
+      box-shadow: 1px 1px 3px grey;
+
+      button {
+        background: none;
+        font-weight: bold;
+      }
+    }
+  }
+
   .form-control {
     display: flex;
     flex-direction: row;
@@ -32,9 +53,6 @@ page-search {
       font-size: 2em;
       text-align: center;
       margin-right: 1px;
-      &[name="arrow-back"] {
-        font-size: 3.5em;
-      }
     }
   }
   .search {
@@ -51,10 +69,9 @@ page-search {
     }
     width: 100%;
   }
-
   div.recommended {
     ion-item {
-        color: color($colors, primary);
+      color: color($colors, primary);
     }
-}
+  }
 }
