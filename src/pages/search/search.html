@@ -26,12 +26,12 @@
     </div>
   </div>
 
-  <div class="recent-searches" ion-row>
+  <div class="recommended" *ngIf="showList" ion-row>
     <ion-list no-lines>
       <ion-item>
-        Recent Searches
+        Categories
       </ion-item>
-      <ion-item>
+      <!-- <ion-item>
         Shoes
       </ion-item>
       <ion-item>
@@ -39,26 +39,28 @@
       </ion-item>
       <ion-item>
         Music
+      </ion-item> -->
+      <ion-item *ngFor="let cat of categoriesRes" (click)="openCategory(cat.categoryId)">
+        <alternate-card [title]="cat.categoryName"></alternate-card>
+      </ion-item>
+
+      <ion-item *ngIf="noCategoriesFound">
+        No catergories found.
       </ion-item>
     </ion-list>
   </div>
 
-  <div class="recommended" ion-row>
+  <div class="recommended" *ngIf="showList" ion-row>
     <ion-list no-lines>
       <ion-item>
-        Recommended for you
+        Users
       </ion-item>
-      <ion-item>
-        <alternate-card></alternate-card>
+      <ion-item *ngFor="let user of usersRes" (click)="openProfileModal(user)">
+        <alternate-card [title]="user.firstName" [companyName]="user.companyName"></alternate-card>
       </ion-item>
-      <ion-item>
-        <alternate-card></alternate-card>
-      </ion-item>
-      <ion-item>
-        <alternate-card></alternate-card>
-      </ion-item>
-      <ion-item>
-        <alternate-card></alternate-card>
+
+      <ion-item *ngIf="noUsersFound">
+        No users found.
       </ion-item>
     </ion-list>
   </div>
