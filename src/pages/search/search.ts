@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { SearchProvider } from "../../providers/search/search";
 import { ProfileModalComponent } from '../../components/profile-modal/profile-modal';
 import { MemberListPage } from '../member-list/member-list';
+import { UserService } from '../../services/user-service';
 
 /**
  * Generated class for the SearchPage page.
@@ -28,7 +29,7 @@ export class SearchPage {
   categoriesRes;
   usersRes;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private searchProvider: SearchProvider, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private searchProvider: SearchProvider, private modalCtrl: ModalController, private userService: UserService) {
   }
 
   ionViewDidLoad() {
@@ -68,9 +69,17 @@ export class SearchPage {
     this.navCtrl.push(MemberListPage, {businessId: id});
   }
 
-  openProfileModal(details) {
-    let profileModal = this.modalCtrl.create(ProfileModalComponent, {memberDetails: details});
-    profileModal.present();
+  openProfileModal(id) {
+    this.userService.getUserDetails(id)
+    .subscribe((res) => {
+      let details = res;
+      details['userFirstName'] = details['firstName'];
+      delete details['firstName'];
+      details['userLastName'] = details['lastName'];
+      delete details['lastName'];
+      let profileModal = this.modalCtrl.create(ProfileModalComponent, {memberDetails: res});
+      profileModal.present();
+    }, error => console.log(error));
   }
 
 }
