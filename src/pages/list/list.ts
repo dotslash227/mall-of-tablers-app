@@ -11,6 +11,7 @@ export class ListPage {
 
   businessList = [];
   totalItems = [];
+  catImage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private businessListService: BusinessListService) {
     this.getBusinessList();
@@ -25,6 +26,7 @@ export class ListPage {
     this.businessListService.getBusinessCategories().subscribe(
       (res) => Object.keys(res).map((key, i) => {
         this.totalItems[i] = res[key];
+        this.totalItems[i].categoryImage = (this.totalItems[i].categoryImage == 'null' || this.totalItems[i].categoryImage == null) ? null : 'http://malloftablers.com' + this.totalItems[i].categoryImage;
         this.businessList = this.totalItems.slice(0, Math.round(this.totalItems.length / 2));
       })
     );

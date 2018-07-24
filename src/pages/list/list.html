@@ -7,7 +7,7 @@
     <category [image]="'https://images.financialexpress.com/2014/06/it-hardware-reuters.jpg'" name="IT Hardware" (click)="openCategory()"></category>
     <category name="Miscellaneous" (click)="openCategory()"></category> -->
     <ion-list>
-      <category *ngFor="let business of businessList" name={{business.name}} (click)="openCategory(business.id)"></category>
+      <category *ngFor="let business of businessList" name={{business.name}} (click)="openCategory(business.id)" [image]="business.categoryImage"></category>
     </ion-list>
 
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

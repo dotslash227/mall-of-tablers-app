@@ -23,7 +23,7 @@ export class CategoryComponent implements OnInit {
   }
 
   initialize(object, placeholder) {
-    return (!object) ? placeholder : object;
+    return (!object || object == null) ? placeholder : object;
   }
 
   ngOnInit() {
