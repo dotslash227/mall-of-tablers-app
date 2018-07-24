@@ -34,6 +34,7 @@ import { SignUpProvider } from '../providers/sign-up/sign-up';
 import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
 import { UserService } from '../services/user-service';
 import { SearchProvider } from '../providers/search/search';
+import { AdvertProvider } from '../providers/advert/advert';
 
 class CallNumberMock extends CallNumber {
   callNumber(options) {
@@ -98,7 +99,8 @@ declarations: [
     SignUpProvider,
     CallNumber,
     UserService,
-    SearchProvider
+    SearchProvider,
+    AdvertProvider
     // { provide: CallNumber, useClass: CallNumberMock }
   ]
 })

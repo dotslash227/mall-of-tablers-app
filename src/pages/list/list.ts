@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { MemberListPage } from '../member-list/member-list';
 import { BusinessListService } from '../../services/business-list-service';
+import { AdvertProvider } from '../../providers/advert/advert';
 
 @Component({
   selector: 'page-list',
@@ -12,9 +13,11 @@ export class ListPage {
   businessList = [];
   totalItems = [];
   catImage;
+  adverts = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private businessListService: BusinessListService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private businessListService: BusinessListService, private advertProvider: AdvertProvider) {
     this.getBusinessList();
+    this.getAdverts();
   }
 
   ionViewDidLoad() {
@@ -26,10 +29,20 @@ export class ListPage {
     this.businessListService.getBusinessCategories().subscribe(
       (res) => Object.keys(res).map((key, i) => {
         this.totalItems[i] = res[key];
+        console.log(this.totalItems[i]);
         this.totalItems[i].categoryImage = (this.totalItems[i].categoryImage == 'null' || this.totalItems[i].categoryImage == null) ? null : 'http://malloftablers.com' + this.totalItems[i].categoryImage;
         this.businessList = this.totalItems.slice(0, Math.round(this.totalItems.length / 2));
       })
     );
+  }
+
+  getAdverts() {
+    this.advertProvider.getAds().subscribe(res => {
+      Object.keys(res).map((key, i) => {
+        this.adverts[i] = res[key];
+        this.adverts[i].adImage = 'http://malloftablers.com' + this.adverts[i].adImage;
+      });
+    })
   }
 
   doInfinite(infiniteScroll) {

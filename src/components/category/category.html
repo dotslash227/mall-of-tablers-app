@@ -2,6 +2,9 @@
 <div class="category">
   <div class="image">
     <img src="{{image}}" alt="">
+    <div class="sponsored" *ngIf="sponsored">
+      sponsored
+    </div>
   </div>
   <div class="content">
     <div>
@@ -10,7 +13,7 @@
   </div>
   <div class="category-footer">
     <div>
-      <b>12 options</b>
+      <b>{{count}} options</b>
       <span class="dot"></span>
       <span class="dist"><b>Nearest 0.4 kms</b></span>
     </div>

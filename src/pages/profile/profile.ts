@@ -48,7 +48,7 @@ export class ProfilePage {
     for (let key in newData) {
       this.profileData[key] = newData[key];
     }
-    console.log(this.profileData['profilePic']);
+    this.profileData['profilePic'] = 'http://malloftablers.com/' + this.profileData['profilePic'];
   }
 
 }

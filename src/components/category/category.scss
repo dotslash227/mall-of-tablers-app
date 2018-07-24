@@ -20,6 +20,17 @@ category {
             position: absolute;
             width: 100%;
         }
+
+        .sponsored {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: color($colors, secondary);
+            color: color($colors, alt-light);
+            text-transform: uppercase;
+            padding: 5px;
+            font-size: 75%;
+        }
     }
 
     .content {
