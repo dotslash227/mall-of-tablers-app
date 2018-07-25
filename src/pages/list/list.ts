@@ -14,6 +14,8 @@ export class ListPage {
   totalItems = [];
   catImage;
   adverts = [];
+  // paginate with 4 results at a time
+  startIndex = 4;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private businessListService: BusinessListService, private advertProvider: AdvertProvider) {
     this.getBusinessList();
@@ -29,9 +31,10 @@ export class ListPage {
     this.businessListService.getBusinessCategories().subscribe(
       (res) => Object.keys(res).map((key, i) => {
         this.totalItems[i] = res[key];
-        console.log(this.totalItems[i]);
         this.totalItems[i].categoryImage = (this.totalItems[i].categoryImage == 'null' || this.totalItems[i].categoryImage == null) ? null : 'http://malloftablers.com' + this.totalItems[i].categoryImage;
-        this.businessList = this.totalItems.slice(0, Math.round(this.totalItems.length / 2));
+        this.businessList = this.totalItems.slice(0, this.startIndex);
+        console.log(this.businessList);
+        // this.businessList = this.totalItems.slice(0, Math.round(this.totalItems.length / 2));
       })
     );
   }
@@ -51,9 +54,24 @@ export class ListPage {
     setTimeout(() => {
       
       if (this.businessList.length != this.totalItems.length) {
-        for (let i = Math.round(this.totalItems.length / 2); i < this.totalItems.length; i++) {
+        let limitIndex;
+
+        if (this.totalItems.length - this.startIndex < 4) {
+          limitIndex = this.totalItems.length;
+        } else {
+          limitIndex = this.startIndex + 4;
+        }
+
+        for (let i = this.startIndex; i < limitIndex; i++) {
           this.businessList.push(this.totalItems[i])
         }
+
+        this.startIndex = limitIndex;
+        console.log(this.businessList);
+
+        // for (let i = Math.round(this.totalItems.length / 2); i < this.totalItems.length; i++) {
+        //   this.businessList.push(this.totalItems[i])
+        // }
       } else {
         infiniteScroll.enable(false);
       }
