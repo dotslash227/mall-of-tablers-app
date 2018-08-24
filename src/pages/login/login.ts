@@ -94,7 +94,7 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
-    console.log(this.navCtrl.length());
+    console.log(this.navCtrl.length(), this.navCtrl.getViews());
     if (!this.navCtrl.canGoBack()) {
       this.showBackBtn = false;
       console.log('hide back btn');
