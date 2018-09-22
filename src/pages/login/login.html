@@ -8,17 +8,21 @@
 <div class="background">
 </div>
 
-<div class="header">
+<!-- <div class="header">
   <div class="back-btn" *ngIf="showBackBtn">
     <button (click)="dismiss()">
       <ion-icon name="arrow-back"></ion-icon>
     </button>
   </div>
-</div>
+</div> -->
 
 <div class="content">
+
+  <div class="logo">
+    <img src="../../assets/imgs/logo.png">
+  </div>
   
-  <div class="title">Welcome!</div>
+  
 
   <form (submit)="onSubmit($event)" [formGroup]="loginForm" class="form">
 
