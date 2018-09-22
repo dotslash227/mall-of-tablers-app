@@ -16,7 +16,7 @@ export class CategoryComponent implements OnInit {
   @Input() image;
   @Input() name;
   @Input() count;
-  imgPlaceholder = '../../assets/imgs/category_background.png';
+  imgPlaceholder = './assets/imgs/category_background.png';
   @Input() sponsored;
 
   constructor() {

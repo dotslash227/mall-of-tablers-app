@@ -42,7 +42,7 @@ export class ProfileModalComponent {
         userFirstName:"John",
         userId:1,
         userLastName:"Doe",
-        profilePic: "../../assets/imgs/profile.png"
+        profilePic: "./assets/imgs/profile.png"
       }
     } else {
       this.memberDetails.profilePic = this.memberDetails.profilePic != 'null' ? 'http://malloftablers.com/' + this.memberDetails.profilePic : './assets/imgs/profile.png';
