@@ -15,10 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoremIpsumPage {
   title: String;
+  content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.title = this.navParams.get('title') || 'Dummy';
+    this.content = this.navParams.get('content') || 'Dummy';
     console.log(this.title);
+    console.log(this.content);
   }
 
   ionViewDidLoad() {

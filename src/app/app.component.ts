@@ -10,6 +10,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
 import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
+import {PrivacyPolicy} from './privacy-policy';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,6 +18,7 @@ import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   showLogout = false;
+  aboutUs = 'National Round Table Conference (India) aims to unite pan India round tables on a singular platform. You can search for fellow round tablers, interact with them, network with them and further do business with them.';
 
   rootPage: any = LoginPage;
   profileData = {
@@ -35,7 +37,7 @@ export class MyApp {
     profilePic: './assets/imgs/profile.png'
   };
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, content: string}>;
 
   active;
 
@@ -65,11 +67,11 @@ export class MyApp {
 
     // used for navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Business Listing', component: ListPage },
-      { title: 'Terms of Use', component: LoremIpsumPage },
-      { title: 'Privacy Policy', component: LoremIpsumPage },
-      { title: 'About Us', component: LoremIpsumPage }
+      { title: 'Home', component: HomePage, content: 'asd' },
+      { title: 'Business Listing', component: ListPage, content: 'asd' },
+      { title: 'Terms of Use', component: LoremIpsumPage, content: 'asd' },
+      { title: 'Privacy Policy', component: LoremIpsumPage, content: new PrivacyPolicy().getText() },
+      { title: 'About Us', component: LoremIpsumPage, content: this.aboutUs }
     ];
 
     this.pages.forEach((val, i) => {
@@ -92,7 +94,7 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component, {title: page.title});
+    this.nav.setRoot(page.component, {title: page.title, content: page.content});
     this.active = page.title;
   }
 
