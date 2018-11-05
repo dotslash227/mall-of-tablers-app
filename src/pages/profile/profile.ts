@@ -16,21 +16,7 @@ import { CallNumber } from '@ionic-native/call-number';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
-  profileData = {
-    username: 'jdoe321', 
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'john_doe@abc.com', 
-    mobile: '8888999900', 
-    companyName: 'TEKSYS', 
-    companyPhone: '444-222', 
-    add1: '221B Baker Street', 
-    add2: 'London', 
-    state: 'England', 
-    pincode: '9999', 
-    categoryId: '2'
-  };
+  profileData = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, private callNumber: CallNumber) {
   }
@@ -48,7 +34,8 @@ export class ProfilePage {
     for (let key in newData) {
       this.profileData[key] = newData[key];
     }
-    this.profileData['profilePic'] = 'http://malloftablers.com/' + this.profileData['profilePic'];
+
+    // this.profileData['profilePic'] = 'http://malloftablers.com/' + this.profileData['profilePic'];
   }
 
 }

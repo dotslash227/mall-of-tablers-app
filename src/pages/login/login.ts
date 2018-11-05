@@ -6,6 +6,8 @@ import { AlertService } from '../../services/alert-service';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
 import { SignUpPage } from '../sign-up/sign-up';
+import { ProfileDataComponent } from '../../components/profile-data/profile-data';
+import { UserService } from '../../services/user-service';
 
 /**
  * Generated class for the LoginPage page.
@@ -27,22 +29,11 @@ export class LoginPage {
     username: new FormControl(),
     password: new FormControl(),
   });
-  profileData = {
-    username: 'john.doe',
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'johndoe@abcd.com',
-    mobile: '99999900',
-    companyName: 'DelhiNerds',
-    companyPhone: '999000',
-    add1: 'Springworks',
-    add2: 'Noida',
-    state: 'UP',
-    pincode: '999999',
-    categoryId: '2',
-};
+  profileData;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService, private alertService: AlertService, private storage: Storage, private events: Events, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService, private alertService: AlertService, private storage: Storage, private events: Events, private loadingCtrl: LoadingController,
+    private userService: UserService) {
+      this.profileData = {};
   }
 
   onSubmit(e) {
@@ -70,13 +61,19 @@ export class LoginPage {
           } else {
             // Dismiss loading controller
             loading.dismiss();
-            this.profileData['email'] = res['email'];
-            this.profileData['username'] = loginData['username'];
-            this.profileData['firstName'] = res['firstName'];
-            this.profileData['lastName'] = res['lastName'];
-            this.profileData['profilePic'] = res['profilePic'];
-            this.storage.set('profileData', this.profileData);
-            this.events.publish('user:loggedin', this.profileData);
+            // this.profileData['email'] = res['email'];
+            // this.profileData['username'] = loginData['username'];
+            // this.profileData['firstName'] = res['firstName'];
+            // this.profileData['lastName'] = res['lastName'];
+            // this.profileData['profilePic'] = res['profilePic'];
+
+            // Get user details from {userid}
+            this.userService.getUserDetails(res['id']).subscribe(
+              this.setProfileData.bind(this),
+              err => console.log('userService error on login page', err)
+            );
+
+            
             this.navCtrl.setRoot(HomePage);
           }
           
@@ -121,4 +118,24 @@ export class LoginPage {
   dismissLoading() {
     this.loading.dismiss();
   }
+
+  setProfileData(res) {
+    console.log('----setProfileData----');
+    console.log('profileData', this.profileData);
+    console.log('response', res);
+    for (let key in res) {
+      if (key === 'profilePic' && res[key] !== null) {
+        res[key] = 'http://malloftablers.com/' + res[key];
+      }
+
+      if (key !== 'status') {
+        this.profileData[key] = res[key];
+      }
+    }
+    console.log('after profileData', this.profileData);
+    console.log('----storing user data in localStorage----');
+    this.storage.set('profileData', this.profileData);
+    this.events.publish('user:loggedin', this.profileData);
+  }
+
 }

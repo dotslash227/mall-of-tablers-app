@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
 import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
 import {PrivacyPolicy} from './privacy-policy';
+import { ProductPage } from '../pages/product/product';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,34 +22,23 @@ export class MyApp {
   aboutUs = 'National Round Table Conference (India) aims to unite pan India round tables on a singular platform. You can search for fellow round tablers, interact with them, network with them and further do business with them.';
 
   rootPage: any = LoginPage;
-  profileData = {
-    username: 'jdoe321', 
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'john_doe@abc.com', 
-    mobile: '8888999900', 
-    companyName: 'TEKSYS', 
-    companyPhone: '444-222', 
-    add1: '221B Baker Street', 
-    add2: 'London', 
-    state: 'England', 
-    pincode: '9999', 
-    categoryId: '2',
-    profilePic: './assets/imgs/profile.png'
-  };
+  profileData = {};
 
   pages: Array<{title: string, component: any, content: string}>;
 
   active;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private storage: Storage, private events: Events) {
+
     this.initializeApp();
     // this.storage.clear();
     this.storage.get('profileData').then(
       (data) => {
         if (data != null || data != undefined) {
           this.profileData = data;
-          this.nav.setRoot(HomePage);
+          // Debug Pages
+          // this.nav.setRoot(HomePage);
+          this.nav.setRoot(ProductPage);
           this.showLogout = true;
         }
       }
@@ -69,10 +59,18 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage, content: 'asd' },
       { title: 'Business Listing', component: ListPage, content: 'asd' },
+      { title: 'My Product', component: ProductPage, content: 'Information about user\'s products' },
       { title: 'Terms of Use', component: LoremIpsumPage, content: 'asd' },
       { title: 'Privacy Policy', component: LoremIpsumPage, content: new PrivacyPolicy().getText() },
       { title: 'About Us', component: LoremIpsumPage, content: this.aboutUs }
     ];
+
+    console.log('rootpage = ', this.rootPage.name);
+    this.active = this.pages.filter(value => {
+      console.log(value.component.name, this.rootPage.name);
+      return value.component.name === this.rootPage.name
+    });
+    console.log('this.active = ', this.active);
 
     this.pages.forEach((val, i) => {
       if (val.component == this.rootPage) {

@@ -14,7 +14,7 @@ export class AlternateCardComponent {
 
   text: string;
   @Input() title;
-  @Input() imgSrc;
+  @Input() imgSrc = this.imgSrc == undefined || this.imgSrc == 'null' || this.imgSrc == null ? './assets/imgs/thumbnail.png' : this.imgSrc;
   @Input() companyName;
 
   constructor() {
@@ -25,7 +25,8 @@ export class AlternateCardComponent {
       this.title = 'Lorem Ipsum tu et!';
     }
 
-    this.imgSrc = this.imgSrc == undefined || this.imgSrc == null ? '../../assets/imgs/thumbnail.png' : this.imgSrc;
+    // this.imgSrc = this.imgSrc == undefined || this.imgSrc == null ? './assets/imgs/thumbnail.png' : this.imgSrc;
+    console.log(this.imgSrc);
 
     if (this.companyName == undefined || this.companyName == null) {
       this.companyName = 'Lorem Ipsum';

@@ -43,7 +43,7 @@
   <ion-row class="profile-details" padding>
     <ion-col>
       <h6>Address</h6>
-      <span>{{profileData.add1}}, {{profileData.add2}}</span>
+      <span>{{profileData.addLine1}}, {{profileData.addLine1}}</span>
     </ion-col>
   </ion-row>
 
@@ -58,6 +58,13 @@
     <ion-col>
       <h6>Company Phone</h6>
       <span>{{profileData.companyPhone}}</span>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="profile-details" padding>
+    <ion-col>
+      <h6>Keywords</h6>
+      <button *ngFor="let keywords of profileData.keywords" ion-button round color="secondary" class="keyword">{{keywords}}</button>
     </ion-col>
   </ion-row>
 

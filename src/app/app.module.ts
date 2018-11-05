@@ -35,6 +35,10 @@ import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
 import { UserService } from '../services/user-service';
 import { SearchProvider } from '../providers/search/search';
 import { AdvertProvider } from '../providers/advert/advert';
+import { ProductPage } from '../pages/product/product';
+import { AddProductComponent } from '../components/add-product/add-product';
+import { GetProductComponent } from '../components/get-product/get-product';
+import { ProductProvider } from '../providers/product/product';
 
 class CallNumberMock extends CallNumber {
   callNumber(options) {
@@ -63,7 +67,10 @@ declarations: [
   ProfileModalComponent,
   MemberListPage,
   SignUpPage,
-  LoremIpsumPage
+  LoremIpsumPage,
+  ProductPage,
+  AddProductComponent,
+  GetProductComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +94,10 @@ declarations: [
     ProfileModalComponent,
     MemberListPage,
     SignUpPage,
-    LoremIpsumPage
+    LoremIpsumPage,
+    ProductPage,
+    AddProductComponent,
+    GetProductComponent
   ],
   providers: [
     StatusBar,
@@ -100,7 +110,8 @@ declarations: [
     CallNumber,
     UserService,
     SearchProvider,
-    AdvertProvider
+    AdvertProvider,
+    ProductProvider
     // { provide: CallNumber, useClass: CallNumberMock }
   ]
 })

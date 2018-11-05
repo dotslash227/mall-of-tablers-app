@@ -13,8 +13,14 @@
     </div>
 
     <div>
-      <button color="primary" (click)="openSearch()" ion-button>
+      <button *ngIf="!addProductBtn && !saveProductBtn" color="primary" (click)="openSearch()" ion-button>
         <ion-icon name="search"></ion-icon>
+      </button>
+      <button *ngIf="addProductBtn" color="primary" ion-button (click)="openAddProductComponent()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button *ngIf="saveProductBtn" color="primary" ion-button type="submit">
+        <ion-icon name="checkmark"></ion-icon>
       </button>
     </div>
   </div>

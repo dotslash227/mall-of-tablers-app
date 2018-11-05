@@ -1,0 +1,46 @@
+<!-- Generated template for the AddProductComponent component -->
+
+<ion-header>
+    
+  <ion-navbar>
+    <div class="nav">
+      <div>
+        <button color="primary" ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </div>
+
+      <div style="flex-grow:2">
+        <ion-title>
+          Add a Product
+        </ion-title>
+      </div>
+
+      <div>
+        <button color="primary" ion-button (click)="onSubmit()">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <form (submit)="onSubmit($event)" [formGroup]="addProductForm"> 
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" floating>Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <input type="file" formControlName="image">
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Description</ion-label>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </form>
+  
+</ion-content>

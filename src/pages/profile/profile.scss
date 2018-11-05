@@ -1,4 +1,10 @@
 page-profile {
+    .keyword {
+        margin-right: 0.5em !important;
+        & > span {
+            padding: 1em;
+        }
+    }
   .top-padding {
     background: color($colors, primary);
     height: 200px;
@@ -27,7 +33,6 @@ page-profile {
   .profile-details {
       ion-col > * {
           padding: 0 !important;
-          margin: 0 !important;
 
           &:first-child {
               color: color($colors, alt-light);
@@ -49,4 +54,6 @@ page-profile {
         font-size: 25px;
         }
     }
+
+
 }
