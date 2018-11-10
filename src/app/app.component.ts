@@ -38,6 +38,7 @@ export class MyApp {
           this.profileData = data;
           // Debug Pages
           // this.nav.setRoot(HomePage);
+          this.active = 'My Product';
           this.nav.setRoot(ProductPage);
           this.showLogout = true;
         }
@@ -59,7 +60,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage, content: 'asd' },
       { title: 'Business Listing', component: ListPage, content: 'asd' },
-      { title: 'My Product', component: ProductPage, content: 'Information about user\'s products' },
+      { title: 'My Products', component: ProductPage, content: 'Information about user\'s products' },
       { title: 'Terms of Use', component: LoremIpsumPage, content: 'asd' },
       { title: 'Privacy Policy', component: LoremIpsumPage, content: new PrivacyPolicy().getText() },
       { title: 'About Us', component: LoremIpsumPage, content: this.aboutUs }

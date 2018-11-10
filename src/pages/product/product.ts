@@ -34,7 +34,7 @@ export class ProductPage {
     this.productProvider.getProductsByUserId(userId)
     .subscribe(res => {
       console.log(res);
-      this.setMyProducts(res);
+      this.setMyProducts(res.reverse());
     }, error => console.error(error));
   }
 

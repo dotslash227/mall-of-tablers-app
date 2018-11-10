@@ -39,6 +39,7 @@ export class MemberListPage {
       this.cardDetails.map((e) => {
         this.userService.getUserDetails(e['userId'])
         .subscribe(res => {
+          console.log(res);
           e = res;
         });
         console.log(e);
@@ -47,6 +48,7 @@ export class MemberListPage {
   }
 
   openProfileModal(details) {
+    console.log(details);
     let profileModal = this.modalCtrl.create(ProfileModalComponent, {memberDetails: details});
     profileModal.present();
   }

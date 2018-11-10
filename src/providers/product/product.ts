@@ -22,4 +22,8 @@ export class ProductProvider {
     return this.http.post(url, body);
   }
 
+  saveProductsDetail(data) {
+    const url = 'http://malloftablers.com/apis/add-product';
+    return this.http.get(url, data);
+  }
 }
