@@ -82,7 +82,7 @@ export class ListPage {
     }, 500);
   }
 
-  openCategory(id) {
-    this.navCtrl.push(MemberListPage, {businessId: id});
+  openCategory(id, count) {
+    this.navCtrl.push(MemberListPage, {businessId: id, count: count});
   }
 }

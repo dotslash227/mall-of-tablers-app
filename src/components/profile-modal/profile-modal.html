@@ -5,7 +5,7 @@
 <div class="mini-profile-wrapper">
 
   <div class="profile-pic">
-    <img src="{{memberDetails.profilePic}}">
+    <img src="{{profilePic}}">
   </div>
 
   <div class="content">
@@ -13,8 +13,8 @@
       <span>
         <ion-icon name="md-contact"></ion-icon>
       </span>
-      <span>{{memberDetails.userFirstName}}</span>
-      <span>{{memberDetails.userLastName}}</span>
+      <span>{{memberDetails.firstName}}</span>
+      <span>{{memberDetails.lastName}}</span>
     </h3>
 
     <h3 class="title" text-center>
@@ -40,6 +40,10 @@
       <span>
         {{memberDetails.state}}
       </span>
+    </h3>
+    
+    <h3 text-center>
+        <button *ngFor="let keywords of memberDetails.keywords" ion-button round color="secondary" class="keyword">{{keywords}}</button>
     </h3>
 
     <ion-row class="mt-1" justify-content-around>

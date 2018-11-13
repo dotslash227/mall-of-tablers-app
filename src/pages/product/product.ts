@@ -16,7 +16,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'product.html',
 })
 export class ProductPage {
-  myProducts = [];
+  myProducts;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private productProvider: ProductProvider,
@@ -34,7 +34,8 @@ export class ProductPage {
     this.productProvider.getProductsByUserId(userId)
     .subscribe(res => {
       console.log(res);
-      this.myProducts = res.map(value => {
+      this.myProducts = res;
+      this.myProducts = this.myProducts.map(value => {
         value['imageUrl'] === null ? value['imageUrl'] = './assets/imgs/thumbnail.png' : value['imageUrl']
         return value;
       });

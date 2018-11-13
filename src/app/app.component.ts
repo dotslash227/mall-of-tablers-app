@@ -12,6 +12,7 @@ import { SearchPage } from '../pages/search/search';
 import { LoremIpsumPage } from '../pages/lorem-ipsum/lorem-ipsum';
 import {PrivacyPolicy} from './privacy-policy';
 import { ProductPage } from '../pages/product/product';
+import { MemberListPage } from '../pages/member-list/member-list';
 
 @Component({
   templateUrl: 'app.html'
@@ -38,7 +39,7 @@ export class MyApp {
           this.profileData = data;
           // Debug Pages
           // this.nav.setRoot(HomePage);
-          this.nav.setRoot(ProductPage);
+          this.nav.setRoot(ListPage);
           this.showLogout = true;
         }
       }

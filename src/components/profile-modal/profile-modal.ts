@@ -16,6 +16,7 @@ export class ProfileModalComponent {
 
   text: string;
   memberDetails;
+  profilePic;
 
   constructor(private viewCtrl: ViewController, private navParams: NavParams,
   private callNumber: CallNumber) {
@@ -44,8 +45,12 @@ export class ProfileModalComponent {
         userLastName:"Doe",
         profilePic: "./assets/imgs/profile.png"
       }
-    } else {
-      this.memberDetails.profilePic = this.memberDetails.profilePic != 'null' ? 'http://malloftablers.com/' + this.memberDetails.profilePic : './assets/imgs/profile.png';
+    }
+
+    console.log(this.memberDetails['profilePic']);
+    this.profilePic = './assets/imgs/profile.png';
+    if (this.memberDetails['profilePic'] != null) {
+      this.profilePic = 'http://malloftablers.com/' + this.memberDetails['profilePic'];
     }
   }
 
