@@ -38,7 +38,6 @@ export class MyApp {
           this.profileData = data;
           // Debug Pages
           // this.nav.setRoot(HomePage);
-          this.active = 'My Product';
           this.nav.setRoot(ProductPage);
           this.showLogout = true;
         }

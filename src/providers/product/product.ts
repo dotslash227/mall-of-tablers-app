@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 /*
   Generated class for the ProductProvider provider.
@@ -14,16 +15,16 @@ export class ProductProvider {
     console.log('Hello ProductProvider Provider');
   }
 
-  getProductsByUserId(userId) {
+  getProductsByUserId(userId): Observable<any> {
     const body = {
       userId: userId
     }
     const url = 'http://malloftablers.com/apis/get-products';
-    return this.http.post(url, body);
+    return this.http.post<[]>(url, body);
   }
 
-  saveProductsDetail(data) {
+  saveProductsDetail(data): Observable<any> {
     const url = 'http://malloftablers.com/apis/add-product';
-    return this.http.get(url, data);
+    return this.http.get<[]>(url, data);
   }
 }
