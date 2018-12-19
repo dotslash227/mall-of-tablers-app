@@ -47,4 +47,9 @@ export class ProductPage {
     this.myProducts = products;
   }
 
+  updateProducts(event) {
+    console.log(event);
+    this.myProducts.push(event);
+  }
+
 }
