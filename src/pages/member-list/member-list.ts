@@ -35,6 +35,7 @@ export class MemberListPage {
   getUsersInCategory(id) {
     this.businessListService.getUsersInBusiness(id)
     .subscribe(res => {
+      console.log(res);
       res.map((e) => {
         this.userService.getUserDetails(e['userId'])
         .subscribe(userDetails => {
