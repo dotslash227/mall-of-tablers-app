@@ -13,7 +13,7 @@
 
 <ion-content padding>
   <ion-list no-lines>
-    <ion-item *ngFor="let product of myProducts">
+    <ion-item *ngFor="let product of myProducts" (addProductEvent)="updateProducts($event)">
       <alternate-card [title]="product.name" [companyName]="product.description" [imgSrc]="product.imageUrl"></alternate-card>
     </ion-item>
   </ion-list>

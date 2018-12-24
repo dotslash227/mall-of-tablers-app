@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Form, NavController, ToastController, LoadingController } from 'ionic-angular';
 import {ProductProvider} from '../../providers/product/product';
@@ -19,6 +19,9 @@ export class AddProductComponent {
   text: string;
   loading;
 
+  @Output()
+  addProductEvent: EventEmitter<any> = new EventEmitter<any>();
+
   addProductForm = new FormGroup({
     name: new FormControl(''),
     description: new FormControl(''),
@@ -36,7 +39,6 @@ export class AddProductComponent {
   onSubmit(event) {
     // event.preventDefault();
     this.presentLoading();
-    console.log(this.addProductForm.value);
     let data = this.addProductForm.value;
 
     this.storage.get('profileData')
@@ -46,6 +48,11 @@ export class AddProductComponent {
         .subscribe((res) => {
           this.dismissLoading();
           console.log(res);
+          let _res = res;
+          if (_res['message'] === 'done') {
+            console.log('message done', data);
+            this.addProductEvent.emit(data)
+          }
           this.navCtrl.pop();
         }, err => {
           this.dismissLoading();

@@ -17,7 +17,7 @@ import { UserService } from "../../services/user-service";
   templateUrl: 'member-list.html',
 })
 export class MemberListPage {
-  cardDetails = [];
+  cardDetails: any = [];
   showCard: boolean = false;
   fullName:string;
   company:string = 'ABC';
@@ -35,17 +35,20 @@ export class MemberListPage {
   getUsersInCategory(id) {
     this.businessListService.getUsersInBusiness(id)
     .subscribe(res => {
-      console.log(res);
-      res.map((e) => {
-        this.userService.getUserDetails(e['userId'])
-        .subscribe(userDetails => {
-          e = userDetails;
-        }, error => {
-          console.log(error);
-        }, () => {
-          this.cardDetails.push(e);
+      if (res !== undefined || res !== null) {
+        let response: any;
+        response = res;
+        response.forEach(e => {
+          this.userService.getUserDetails(e['userId'])
+            .subscribe(userDetails => {
+              e = userDetails;
+            }, error => {
+              console.log(error);
+            }, () => {
+              this.cardDetails.push(e);
+            });
         });
-      });
+      }
     }, error => console.log(error),
     () => {
       console.log(this.cardDetails);
@@ -55,7 +58,6 @@ export class MemberListPage {
   }
 
   openProfileModal(details) {
-    console.log(details);
     let profileModal = this.modalCtrl.create(ProfileModalComponent, {memberDetails: details});
     profileModal.present();
   }

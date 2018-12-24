@@ -65,6 +65,12 @@
         </button>
       </ion-col>
     </ion-row>
+
+    <div class="mt-1">
+      <button ion-button color="secondary" full (click)="showProductPage()" *ngIf="productList.length > 0">
+        Show {{memberDetails.firstName}}'s products
+      </button>
+    </div>
   </div>
 
 </div>

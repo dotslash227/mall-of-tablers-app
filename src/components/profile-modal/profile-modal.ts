@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams } from 'ionic-angular';
+import { ViewController, NavParams, NavController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
+import { ProductProvider } from '../../providers/product/product';
+import { ProductPage } from '../../pages/product/product';
 
 /**
  * Generated class for the ProfileModalComponent component.
@@ -17,14 +19,17 @@ export class ProfileModalComponent {
   text: string;
   memberDetails;
   profilePic;
+  productList:any = [];
 
   constructor(private viewCtrl: ViewController, private navParams: NavParams,
-  private callNumber: CallNumber) {
+  private callNumber: CallNumber, private productService: ProductProvider,
+  private navCtrl: NavController) {
     console.log('Hello ProfileModalComponent Component');
     this.text = 'Hello World';
 
     this.memberDetails = this.navParams.get('memberDetails');
     console.log(this.memberDetails);
+    this.userProducts(this.memberDetails.userId);
     
     // For the home page, since frequently contacted persons API does not exists
     if (this.memberDetails === undefined) {
@@ -54,6 +59,14 @@ export class ProfileModalComponent {
     }
   }
 
+  userProducts(id) {
+    this.productService.getProductsByUserId(id)
+    .subscribe(res => {
+      console.log(res);
+      this.productList = res;
+    })
+  }
+
   closeModal() {
     this.viewCtrl.dismiss();
   }
@@ -63,6 +76,12 @@ export class ProfileModalComponent {
     this.callNumber.callNumber(number, true)
     .then(res => console.log('Launch Dialer', res))
     .catch(err => console.log(err));
+  }
+
+  showProductPage() {
+    this.navCtrl.push(ProductPage, {
+      listOfProducts: this.productList
+    });
   }
 
 }

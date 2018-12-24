@@ -38,8 +38,8 @@ export class MyApp {
         if (data != null || data != undefined) {
           this.profileData = data;
           // Debug Pages
-          // this.nav.setRoot(HomePage);
-          this.nav.setRoot(ListPage);
+          this.nav.setRoot(HomePage);
+          // this.nav.setRoot(ListPage);
           this.showLogout = true;
         }
       }

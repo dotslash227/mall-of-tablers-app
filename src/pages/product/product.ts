@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProductProvider } from '../../providers/product/product';
 import { Storage } from '@ionic/storage';
@@ -21,8 +21,13 @@ export class ProductPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private productProvider: ProductProvider,
     storage: Storage) {
-      storage.get('profileData')
-      .then(this.getProductsByUserIdImpl.bind(this), err => console.error(err));
+      console.log(navCtrl.getPrevious())
+      const listOfProducts = navParams.get('listOfProducts');
+      if (!listOfProducts)
+        storage.get('profileData')
+        .then(this.getProductsByUserIdImpl.bind(this), err => console.error(err));
+      else
+        this.setMyProducts(listOfProducts);
   }
 
   ionViewDidLoad() {
@@ -45,6 +50,11 @@ export class ProductPage {
 
   setMyProducts(products) {
     this.myProducts = products;
+  }
+
+  updateProducts(event) {
+    console.log(event);
+    this.myProducts.push(event);
   }
 
 }

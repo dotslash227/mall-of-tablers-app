@@ -25,6 +25,6 @@ export class ProductProvider {
 
   saveProductsDetail(data) {
     const url = 'http://malloftablers.com/apis/add-product';
-    return this.http.get(url, data);
+    return this.http.post(url, data);
   }
 }
