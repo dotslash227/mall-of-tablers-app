@@ -49,7 +49,7 @@ export class MyApp {
     this.events.subscribe('user:loggedin', (data) => {
       console.log('Event user Log', data);
       this.profileData = data;
-      this.showLogout = true;
+      this.showLogout = true;      
 
       if (this.profileData['profilePic'] === null || this.profileData['profilePic'] === "null") {
         this.profileData['profilePic'] = './assets/imgs/profile.png';
@@ -61,7 +61,7 @@ export class MyApp {
       { title: 'Home', component: HomePage, content: 'asd' },
       { title: 'Business Listing', component: ListPage, content: 'asd' },
       { title: 'My Products', component: ProductPage, content: 'Information about user\'s products' },
-      { title: 'Terms of Use', component: LoremIpsumPage, content: 'asd' },
+      { title: 'Terms of Use', component: LoremIpsumPage, content: new PrivacyPolicy().getText() },
       { title: 'Privacy Policy', component: LoremIpsumPage, content: new PrivacyPolicy().getText() },
       { title: 'About Us', component: LoremIpsumPage, content: this.aboutUs }
     ];

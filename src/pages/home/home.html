@@ -3,16 +3,44 @@
 </ion-header>
 
 <ion-content padding class="relative">
-  
-  <h3 class="max-width align-center">Frequently Contacted</h3>
-  <card name="Nilabjo Sanyal" company="Tekons" address="Delhi"  (click)="openProfileModal()"></card>
-  <card name="Ankush Agarwal" company="Moonlight" address="Noida" (click)="openProfileModal()"></card>
-  <card name="Dhruv Arora" company="Delhinerds" address="Noida" (click)="openProfileModal()"></card>
 
-  <h3 class="max-width align-center mt-1">Popular Listings</h3>
-  <category [image]="'../../assets/imgs/consulting.jpg'" name="Consulting" (click)="openCategory()"></category>
-  <category [image]="'../../assets/imgs/art_craft.png'" name="Art and Craft" (click)="openCategory()"></category>
-  <category [image]="'https://www.suitsmen.co.uk/suit-images/info-1x/darwin-classic-fit-suit-jacket-1.jpg'" name="Clothing" (click)="openCategory()"></category>
-  <category name="Sports" (click)="openCategory()"></category>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+
+      </ion-col>
+      <ion-col>
+        <h5>Hi first name, last name</h5><hr />
+        Welcome to the NDRT Table no 24 's Mall of Tablers is the mobile app launched by the National Round Table Conferencers Table Number 24, which aims to connect businesses across NDRT chapters all over India.
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <div style="border-top:1px solid grey;">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="center">
+          <img src="../assets/profile.png" /><br />
+          My Profile
+        </ion-col>
+        <ion-col class="center">
+          <img src="../assets/businessl.png" /><br />
+          Business Listings
+        </ion-col>        
+      </ion-row>
+      <ion-row>
+        <ion-col class="center">
+          <img src="../assets/products.jpg" /><br />
+          My Products
+        </ion-col>
+        <ion-col class="center">
+          <img src="../assets/about.png" /><br />
+          About Us
+        </ion-col>        
+      </ion-row>
+    </ion-grid>  
+  </div>
+  
   
 </ion-content>

@@ -6,7 +6,7 @@
     </div>
     <div menuClose class="profile-menu-container" (click)="goToProfile()">
       <div class="image">
-          <img src="./assets/imgs/profile.png">
+          <img src="{{profileData.profilePic}}">
       </div>
       <div *ngIf="profileData">
         <span>{{profileData.firstName}} {{profileData.lastName}}</span>

@@ -1,5 +1,7 @@
 page-login {
 
+    padding-top: 20%;
+
     $login-bg-color: #56476e;
     $login-font-color: color($colors, light);
     $textbox-color: #5a4b72;
@@ -13,7 +15,9 @@ page-login {
 
     $border-radius: 10px;
 
-    .background {
+    background-color: $login-bg-color;
+
+    .background {        
         background: $login-bg-color;
         position: fixed;
         width: 100%;

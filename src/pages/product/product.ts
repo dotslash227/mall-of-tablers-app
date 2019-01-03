@@ -41,7 +41,12 @@ export class ProductPage {
       console.log(res);
       this.myProducts = res;
       this.myProducts = this.myProducts.map(value => {
-        value['imageUrl'] === null ? value['imageUrl'] = './assets/imgs/thumbnail.png' : value['imageUrl']
+        if (value['imageUrl'] === null){
+          value["imageUrl"]='./assets/imgs/thumbnail.png';
+        }
+        else{
+          value["imageUrl"]="http://www.malloftablers.com"+value["imageUrl"]
+        }
         return value;
       });
       this.setMyProducts(this.myProducts.reverse());
