@@ -1,9 +1,15 @@
 page-home {
 
+    .icon-box{
+        border-top:1px solid grey;
+        padding-top: 30px;
+        margin-top: 10px;
+    }
+
     .center{
         text-align: center;
         color: teal;
-        font-weight: bold;
+        font-weight: bold;        
 
         img{
             width: 100px;

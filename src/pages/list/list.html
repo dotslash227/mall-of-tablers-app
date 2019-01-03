@@ -7,11 +7,18 @@
     <category [image]="'https://images.financialexpress.com/2014/06/it-hardware-reuters.jpg'" name="IT Hardware" (click)="openCategory()"></category>
     <category name="Miscellaneous" (click)="openCategory()"></category> -->
     <ion-list>
-      <category *ngFor="let advert of adverts" [image]="advert.adImage" [sponsored]="true"></category>
-      <category *ngFor="let business of businessList" name={{business.name}} (click)="openCategory(business.id, business.count)" [image]="business.categoryImage" count={{business.count}}></category>
+      <!-- <category *ngFor="let advert of adverts" [image]="advert.adImage" [sponsored]="true"></category> -->
+      <!-- <category *ngFor="let business of businessList" name={{business.name}} (click)="openCategory(business.id, business.count)" [image]="business.categoryImage" count={{business.count}}></category> -->
+
+
+      <div *ngFor="let business of businessList" class="business-listings" (click)="openCategory(business.id, business.count)">
+        <p style="color:black; font-weight:bold;">{{business.name}} ({{business.count}})</p>
+      </div>
+
+
     </ion-list>
 
-    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    </ion-infinite-scroll> -->
 </ion-content>
