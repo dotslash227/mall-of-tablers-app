@@ -15,7 +15,7 @@ export class ListPage {
   catImage;
   adverts = [];
   // paginate with 4 results at a time
-  startIndex = 4;
+  startIndex = 50;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private businessListService: BusinessListService, private advertProvider: AdvertProvider) {
     this.getBusinessList();
