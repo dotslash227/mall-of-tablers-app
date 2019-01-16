@@ -7,6 +7,7 @@ import { ListPage } from '../list/list';
 import { ProductPage } from '../product/product';
 import { LoremIpsumPage } from '../lorem-ipsum/lorem-ipsum';
 import { Storage } from '@ionic/storage';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
   selector: 'page-home',
@@ -54,6 +55,10 @@ export class HomePage {
 
   openCategory() {
     this.navCtrl.push(MemberListPage, {title: 'Member List'});
+  }
+
+  openProfilePage(){
+    this.navCtrl.setRoot(ProfilePage);
   }
 
   openBusinessListings(){
