@@ -8,10 +8,10 @@
   <ion-grid>
     <ion-row>
       <ion-col col-4>
-
+        <img src="{{profileData.profilePic}}" />
       </ion-col>
       <ion-col>
-        <h5>Hi first name, last name</h5><hr />
+        <h5>Hi {{profileData.firstName}} {{profileData.lastName}}</h5><hr />
         Welcome to the NDRT Table no 24 's Mall of Tablers is the mobile app launched by the National Round Table Conferencers Table Number 24, which aims to connect businesses across NDRT chapters all over India.
       </ion-col>
     </ion-row>
@@ -20,22 +20,22 @@
   <div class="icon-box">
     <ion-grid>
       <ion-row>
-        <ion-col class="center">
-          <img src="../assets/profile.png" /><br />
+        <ion-col class="center" (click)="openProfileModal()">
+          <img src="assets/profile.png" /><br />
           My Profile
         </ion-col>
-        <ion-col class="center">
-          <img src="../assets/businessl.png" /><br />
+        <ion-col class="center" (click)="openBusinessListings()">
+          <img src="assets/businessl.png" /><br />
           Business Listings
         </ion-col>        
       </ion-row>
       <ion-row>
-        <ion-col class="center">
-          <img src="../assets/products.jpg" /><br />
+        <ion-col class="center" (click)="openProducts()">
+          <img src="assets/products.jpg" /><br />
           My Products
         </ion-col>
-        <ion-col class="center">
-          <img src="../assets/about.png" /><br />
+        <ion-col class="center" (click)="openAbout()">
+          <img src="assets/about.png" /><br />
           About Us
         </ion-col>        
       </ion-row>
